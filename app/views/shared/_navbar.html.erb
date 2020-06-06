@@ -8,18 +8,19 @@
   <div class="collapse navbar-collapse" id="navbarNav">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item">
-        <%= link_to 'Diário', {controller: 'home'}, class: "nav-link" %>
+        <%= link_to 'Diário', home_index_path, class: "nav-link" %>
       </li>
       <li class="nav-item">
-        <%= link_to 'Alimentos', {controller: 'alimentos'}, class: "nav-link" %>
+        <%= link_to 'Alimentos', alimentos_path, class: "nav-link" %>
       </li>
     </ul>
     <ul class="navbar-nav">
       <li class="nav-item">
-        <span class="navbar-text mr-4">Nome Sobrenome</span>
+        <span class="navbar-text mr-4"><%= current_user.email %></span>
       </li>
       <li>
-        <%= button_to 'Sair', new_alimento_path, class: "btn btn-dark" %>
+        <%= button_to 'Sair', destroy_user_session_path, method: :delete,
+          class: "btn btn-dark" %>
       </li>
     </div>
   </div>

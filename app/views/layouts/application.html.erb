@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>ProjetoTecprog2</title>
+    <title>Projeto tecprog2</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -10,14 +10,14 @@
   </head>
 
   <body>
-    <% if true %>
-    <%= render "shared/navbar" %>
+    <% if current_user %>
+      <%= render "shared/navbar" %>
     <% end %>
-    <div class="container-fluid px-5 py-4">
+    <div class="container-fluid">
       <%= yield %>
     </div>
   </body>
 
-  <%= javascript_include_tag 'application', 'jquery', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true  %>
 
 </html>
