@@ -1,0 +1,29 @@
+<%= bootstrap_form_with model: @alimento, local: true do |f| %>
+
+  <%= f.text_field :nome, label_col: "col-sm-1", control_col: "col-sm-3" %>
+  <%= f.text_field :marca, label_col: "col-sm-1", label: 'Marca (opcional)',
+    control_col: "col-sm-3" %>
+
+  <%= f.label 'Tamanho da porção' %>
+  <%= f.text_field :porcao, placeholder: '1', skip_label: true %>
+  <%= f.text_field :unidade, placeholder: 'unidade (s)', skip_label: true %>
+  <%= f.text_field :porcoes_pacote, placeholder: '1',
+    label: 'Porções por pacote (opcional)' %>
+
+  <%= f.text_field :energia, append: "(kcal)" %>
+  <%= f.text_field :proteina, label: 'Proteína', append: "(g)" %>
+  <%= f.text_field :carb_total, label: 'Carboidrato total', append: "(g)" %>
+  <%= f.text_field :carb_disp, label: 'Carboidrato disponível', append: "(g)" %>
+  <%= f.text_field :fibra, label: 'Fibra alimentar', append: "(g)" %>
+  <%= f.text_field :acucar, label: 'Açúcar', append: "(g)" %>
+  <%= f.text_field :gord_total, label: 'Gordura total', append: "(g)" %>
+  <%= f.text_field :gord_sat, label: 'Gordura saturada', append: "(g)" %>
+  <%= f.text_field :gord_mono, label: 'Gordura monoinsaturada', append: "(g)" %>
+  <%= f.text_field :gord_poli, label: 'Gordura poliinsaturada', append: "(g)" %>
+  <%= f.text_field :gord_trans, label: 'Gordura trans', append: "(g)" %>
+  <%= f.text_field :colesterol, label: 'Colesterol', append: "(mg)" %>
+  <%= f.text_field :sodio, label: 'Sódio', append: "(mg)" %>
+
+  <%= f.submit 'Salvar', class: 'btn btn-primary' %>
+
+<% end %>

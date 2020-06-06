@@ -3,26 +3,39 @@ class AlimentosController < ApplicationController
     @alimentos = Alimento.all
   end
 
-  def show
-    @alimento = Alimento.find(params[:id])
-  end
-
   def new
+    @alimento = Alimento.new
   end
 
   def edit
+    @alimento = Alimento.find(params[:id])
   end
 
   def create
     @alimento = Alimento.new(alimento_params)
-    @alimento.save
-    redirect_to @alimento
+
+    if @alimento.save
+      redirect_to alimentos_path
+    else
+      render 'new'
+    end
   end
 
   def update
+    @alimento = Alimento.find(params[:id])
+
+    if @alimento.update(alimento_params)
+      redirect_to alimentos_path
+    else
+      render 'edit'
+    end
   end
 
   def destroy
+    @alimento = Alimento.find(params[:id])
+    @alimento.destroy
+
+    redirect_to alimentos_path
   end
 
   private

@@ -1,4 +1,12 @@
-<h1>Lista de alimentos</h1>
+<div class="d-flex justify-content-between align-items-center">
+  <div>
+    <h1>Lista de alimentos</h1>
+  </div>
+  <div>
+    <%= button_to 'Adicionar', new_alimento_path, method: :get,
+      class: "btn btn-primary" %>
+  </div>
+</div>
 
 <table class="table table-hover">
   <thead class="thead-dark">
@@ -16,7 +24,7 @@
   </thead>
 
   <% @alimentos.each do |alimento| %>
-    <tr>
+    <tr data-link="<%= edit_alimento_path(alimento) %>">
       <td><%= alimento.nome_completo %></td>
       <td><%= alimento.energia %></td>
       <td><%= alimento.proteina %></td>
