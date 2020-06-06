@@ -24,4 +24,8 @@ class Alimento < ApplicationRecord
       return self.nome + ' (' + self.marca + ')'
     end
   end
+
+  def tamanho_porcao
+    return self.porcao.to_s + ' ' + self.unidade
+  end
 end

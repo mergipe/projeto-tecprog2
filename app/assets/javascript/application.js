@@ -1,8 +1,8 @@
+//= require jquery
+//= require bootstrap
 //= require_tree .
 
-document.addEventListener("turbolinks:load", function() {
-    $("tr[data-link]").click(function() {
-        window.location = $(this).data("link");
-    });
+$("tr[data-link]").click(function() {
+    window.location = $(this).data("link");
 });
 
