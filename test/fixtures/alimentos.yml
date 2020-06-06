@@ -1,0 +1,41 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  nome: MyString
+  marca: MyString
+  porcao: 1.5
+  unidade: MyString
+  porcoes_pacote: 1.5
+  energia: 1.5
+  proteina: 1.5
+  carb_total: 1.5
+  carb_disp: 1.5
+  fibra: 1.5
+  acucar: 1.5
+  gord_total: 1.5
+  gord_sat: 1.5
+  gord_mono: 1.5
+  gord_poli: 1.5
+  gord_trans: 1.5
+  colesterol: 1.5
+  sodio: 1.5
+
+two:
+  nome: MyString
+  marca: MyString
+  porcao: 1.5
+  unidade: MyString
+  porcoes_pacote: 1.5
+  energia: 1.5
+  proteina: 1.5
+  carb_total: 1.5
+  carb_disp: 1.5
+  fibra: 1.5
+  acucar: 1.5
+  gord_total: 1.5
+  gord_sat: 1.5
+  gord_mono: 1.5
+  gord_poli: 1.5
+  gord_trans: 1.5
+  colesterol: 1.5
+  sodio: 1.5

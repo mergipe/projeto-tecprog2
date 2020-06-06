@@ -1,0 +1,157 @@
+<h1>Novo alimento</h1>
+<%= form_with scope: :alimento, url: alimentos_path, local: true do |form| %>
+  <div class="form-group">
+    <%= form.label :nome %>
+    <%= form.text_field :nome %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :marca, 'Marca (opcional)' %>
+    <%= form.text_field :marca %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label 'Tamanho da porção' %><br>
+    <%= form.text_field :porcao, placeholder: '1' %>
+    <%= form.text_field :unidade, placeholder: 'unidade (s)' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :porcoes_pacote, 'Porções por pacote (opcional)' %><br>
+    <%= form.text_field :porcoes_pacote, placeholder: '1' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :energia %><br>
+    <div class="input-group">
+      <%= form.text_field :energia %>
+      <div class="input-group-append">
+        <span class="input-group-text">kcal</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :proteina, 'Proteína' %><br>
+    <div class="input-group">
+      <%= form.text_field :proteina %>
+      <div class="input-group-append">
+        <span class="input-group-text">g</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :carb_total, 'Carboidrato total' %><br>
+    <div class="input-group">
+      <%= form.text_field :carb_total %>
+      <div class="input-group-append">
+        <span class="input-group-text">g</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :carb_disp, 'Carboidrato disponível' %><br>
+    <div class="input-group">
+      <%= form.text_field :carb_disp %>
+      <div class="input-group-append">
+        <span class="input-group-text">g</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :fibra, 'Fibra alimentar' %><br>
+    <div class="input-group">
+      <%= form.text_field :fibra %>
+      <div class="input-group-append">
+        <span class="input-group-text">g</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :acucar, 'Açúcar' %><br>
+    <div class="input-group">
+      <%= form.text_field :acucar %>
+      <div class="input-group-append">
+        <span class="input-group-text">g</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :gord_total, 'Gordura total' %><br>
+    <div class="input-group">
+      <%= form.text_field :gord_total %>
+      <div class="input-group-append">
+        <span class="input-group-text">g</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :gord_sat, 'Gordura saturada' %><br>
+    <div class="input-group">
+      <%= form.text_field :gord_sat %>
+      <div class="input-group-append">
+        <span class="input-group-text">g</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :gord_mono, 'Gordura monoinsaturada' %><br>
+    <div class="input-group">
+      <%= form.text_field :gord_mono %>
+      <div class="input-group-append">
+        <span class="input-group-text">g</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :gord_poli, 'Gordura poliinsaturada' %><br>
+    <div class="input-group">
+      <%= form.text_field :gord_poli %>
+      <div class="input-group-append">
+        <span class="input-group-text">g</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :gord_trans, 'Gordura trans' %><br>
+    <div class="input-group">
+      <%= form.text_field :gord_trans %>
+      <div class="input-group-append">
+        <span class="input-group-text">g</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :colesterol %><br>
+    <div class="input-group">
+      <%= form.text_field :colesterol %>
+      <div class="input-group-append">
+        <span class="input-group-text">mg</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :sodio, 'Sódio' %><br>
+    <div class="input-group">
+      <%= form.text_field :sodio %>
+      <div class="input-group-append">
+        <span class="input-group-text">mg</span>
+      </div>
+    </div>
+  </div>
+
+  <div>
+    <%= form.submit 'Criar alimento', class: 'btn btn-primary' %>
+  </div>
+<% end %>

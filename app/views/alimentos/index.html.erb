@@ -1,0 +1,31 @@
+<h1>Lista de alimentos</h1>
+
+<table class="table table-hover">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">Nome (Marca)</th>
+      <th scope="col">Energia (kcal)</th>
+      <th scope="col">Proteína (g)</th>
+      <th scope="col">Carboidrato total (g)</th>
+      <th scope="col">Carboidrato disponível (g)</th>
+      <th scope="col">Fibra alimentar (g)</th>
+      <th scope="col">Gordura total (g)</th>
+      <th scope="col">Gordura trans (g)</th>
+      <th scope="col">Sódio (mg)</th>
+    </tr>
+  </thead>
+
+  <% @alimentos.each do |alimento| %>
+    <tr>
+      <td><%= alimento.nome_completo %></td>
+      <td><%= alimento.energia %></td>
+      <td><%= alimento.proteina %></td>
+      <td><%= alimento.carb_total %></td>
+      <td><%= alimento.carb_disp %></td>
+      <td><%= alimento.fibra %></td>
+      <td><%= alimento.gord_total %></td>
+      <td><%= alimento.gord_trans %></td>
+      <td><%= alimento.sodio %></td>
+    </tr>
+  <% end %>
+</table>
