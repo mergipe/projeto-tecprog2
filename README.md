@@ -1,24 +1,8 @@
-# README
+# Contador de calorias e macronutrientes
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Este projeto se baseia em aplicativos como MyFitnessPal, que auxilia o usuário
+a contabilizar as calorias e macronutrientes consumidos diariamente.
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+O objetivo é permitir que o usuário adicione, edite e remova alimentos e use-os
+para montar as refeições diárias. A ideia é que o total de calorias e
+macronutrientes consumidos seja atualizado de acordo com o que for registrado.
