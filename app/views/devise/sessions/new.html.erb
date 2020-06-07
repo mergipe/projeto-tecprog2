@@ -1,22 +1,22 @@
-<div class="w-15 mt-5 mx-auto">
-  <h2 class="text-center mb-4">Entrar</h2>
+<div class="w-25 mt-5 mx-auto">
+  <h2 class="text-center mb-4"><%= t('.sign_in') %></h2>
 
   <%= bootstrap_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
 
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-    <%= f.password_field :password, label: 'Senha', autocomplete: "current-password" %>
+    <%= f.password_field :password, autocomplete: "current-password" %>
 
     <% if false %>
-    <% if devise_mapping.rememberable? %>
-      <div class="field">
-        <%= f.check_box :remember_me %>
-        <%= f.label :remember_me, 'Lembrar de mim' %>
-      </div>
-    <% end %>
+      <% if devise_mapping.rememberable? %>
+        <div class="field">
+          <%= f.check_box :remember_me %>
+          <%= f.label :remember_me %>
+        </div>
+      <% end %>
     <% end %>
 
     <div class="d-flex justify-items-center">
-      <%= f.submit "Entrar", class: 'btn btn-primary mx-auto' %>
+      <%= f.submit t('.sign_in'), class: 'btn btn-primary mx-auto' %>
     </div>
 
   <% end %>
@@ -24,4 +24,5 @@
   <div class="mt-2 text-center">
     <%= render "devise/shared/links" %>
   </div>
+
 </div>

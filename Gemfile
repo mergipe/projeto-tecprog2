@@ -60,5 +60,6 @@ gem 'jquery-rails'
 gem 'whenever', require: false
 gem 'rails-i18n'
 gem 'devise'
+gem 'devise-i18n'
 gem 'popper'
 gem 'rails-ujs'
