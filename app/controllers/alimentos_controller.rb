@@ -3,16 +3,25 @@ class AlimentosController < ApplicationController
     @alimentos = Alimento.all
   end
 
+  def show
+    @alimento = Alimento.find(params[:id])
+    respond_to do |format|
+      format.js
+    end
+  end
+
   def new
     @alimento = Alimento.new
   end
 
   def edit
+    @user = User.find(params[:user_id])
     @alimento = Alimento.find(params[:id])
   end
 
   def create
-    @alimento = Alimento.new(alimento_params)
+    @user = User.find(params[:user_id])
+    @alimento = @user.alimentos.create(alimento_params)
 
     if @alimento.save
       redirect_to alimentos_path
@@ -22,7 +31,8 @@ class AlimentosController < ApplicationController
   end
 
   def update
-    @alimento = Alimento.find(params[:id])
+    @user = User.find(params[:user_id])
+    @alimento = @user.alimentos.find(params[:id])
 
     if @alimento.update(alimento_params)
       redirect_to alimentos_path

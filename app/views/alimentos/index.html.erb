@@ -3,7 +3,7 @@
     <h1>Lista de alimentos</h1>
   </div>
   <div>
-    <%= button_to 'Adicionar', new_alimento_path, method: :get,
+    <%= button_to 'Adicionar', new_user_alimento_path(current_user), method: :get,
       class: "btn btn-primary" %>
   </div>
 </div>
@@ -24,7 +24,7 @@
   </thead>
 
   <% @alimentos.each do |alimento| %>
-    <tr data-link="<%= edit_alimento_path(alimento) %>">
+    <tr data-href="<%= alimento_path(alimento) %>">
       <td><%= alimento.nome_completo %></td>
       <td><%= alimento.tamanho_porcao %></td>
       <td><%= alimento.energia %></td>
@@ -37,3 +37,6 @@
     </tr>
   <% end %>
 </table>
+
+<div id="modal">
+</div>
