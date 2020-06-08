@@ -25,7 +25,7 @@ class AlimentosController < ApplicationController
     @alimento = @user.alimentos.create(alimento_params)
 
     if @alimento.save
-      redirect_to alimentos_path
+      redirect_to user_alimentos_path(@user)
     else
       render 'new'
     end
@@ -36,7 +36,7 @@ class AlimentosController < ApplicationController
     @alimento = @user.alimentos.find(params[:id])
 
     if @alimento.update(alimento_params)
-      redirect_to alimentos_path
+      redirect_to user_alimentos_path(@user)
     else
       render 'edit'
     end
@@ -46,7 +46,7 @@ class AlimentosController < ApplicationController
     @alimento = Alimento.find(params[:id])
     @alimento.destroy
 
-    redirect_to alimentos_path
+    redirect_to user_alimentos_path(@user)
   end
 
   def delete

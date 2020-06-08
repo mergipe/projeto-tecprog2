@@ -57,7 +57,6 @@ gem 'bootstrap', '~> 4.5.0'
 gem 'bootstrap_form', "~> 4.0"
 gem 'jquery-rails'
 
-gem 'whenever', require: false
 gem 'rails-i18n'
 gem 'devise'
 gem 'devise-i18n'

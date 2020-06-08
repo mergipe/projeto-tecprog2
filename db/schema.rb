@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_06_233708) do
+ActiveRecord::Schema.define(version: 2020_06_08_145053) do
 
   create_table "alimentos", force: :cascade do |t|
     t.string "nome"
@@ -37,6 +37,14 @@ ActiveRecord::Schema.define(version: 2020_06_06_233708) do
     t.index ["user_id"], name: "index_alimentos_on_user_id"
   end
 
+  create_table "dias", force: :cascade do |t|
+    t.date "data"
+    t.integer "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_dias_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -51,4 +59,5 @@ ActiveRecord::Schema.define(version: 2020_06_06_233708) do
   end
 
   add_foreign_key "alimentos", "users"
+  add_foreign_key "dias", "users"
 end
