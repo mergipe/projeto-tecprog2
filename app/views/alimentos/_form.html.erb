@@ -1,4 +1,4 @@
-<%= bootstrap_form_with(model: [ current_user, @alimento ], local: true,
+<%= bootstrap_form_with(model: [ @user, @alimento ], local: true,
   inline_errors: true, html: { autocomplete: "off" }) do |f| %>
 
   <hr>
@@ -82,7 +82,7 @@
 
   <div class="mt-4">
     <% if @alimento.persisted? %>
-      <%= link_to 'Remover', delete_alimento_path(@alimento), remote: true,
+      <%= link_to 'Remover', user_delete_alimento_path(@user, @alimento), remote: true,
         class: 'btn btn-danger ml-2' %>
     <% end %>
 

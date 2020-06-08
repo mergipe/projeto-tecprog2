@@ -1,6 +1,8 @@
 class DiasController < ApplicationController
   def index
-    Dia.create_if_not_exists(current_user)
+    @user = User.find(params[:user_id])
+    Dia.create_if_not_exists(@user)
+    @dias = @user.dias.all
   end
 
   def show

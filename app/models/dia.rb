@@ -1,7 +1,7 @@
 class Dia < ApplicationRecord
   belongs_to :user
 
-  validates :data, uniqueness: true, presence: true
+  validates :data, presence: true
 
   def self.create_if_not_exists(user)
     today = DateTime.current.to_date

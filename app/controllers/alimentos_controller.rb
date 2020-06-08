@@ -1,6 +1,11 @@
 class AlimentosController < ApplicationController
   def index
-    @alimentos = Alimento.all
+    if params[:user_id] == nil
+      @alimentos = Alimento.all
+    else
+      @user = User.find(params[:user_id])
+      @alimentos = @user.alimentos.all
+    end
   end
 
   def show
@@ -12,12 +17,13 @@ class AlimentosController < ApplicationController
   end
 
   def new
+    @user = User.find(params[:user_id])
     @alimento = Alimento.new
   end
 
   def edit
     @user = User.find(params[:user_id])
-    @alimento = Alimento.find(params[:id])
+    @alimento = @user.alimentos.find(params[:id])
   end
 
   def create
@@ -43,14 +49,16 @@ class AlimentosController < ApplicationController
   end
 
   def destroy
-    @alimento = Alimento.find(params[:id])
+    @user = User.find(params[:user_id])
+    @alimento = @user.alimentos.find(params[:id])
     @alimento.destroy
 
     redirect_to user_alimentos_path(@user)
   end
 
   def delete
-    @alimento = Alimento.find(params[:id])
+    @user = User.find(params[:user_id])
+    @alimento = @user.alimentos.find(params[:id])
 
     respond_to do |format|
       format.js

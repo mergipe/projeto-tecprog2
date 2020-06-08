@@ -3,13 +3,12 @@ Rails.application.routes.draw do
 
   resources :users do
     resources :alimentos, only: [:index, :new, :edit, :create, :update, :destroy]
+    get 'alimentos/:id/delete', to: 'alimentos#delete', as: 'delete_alimento'
     resources :dias, only: [:index, :show]
   end
 
   resources :alimentos, only: [:index, :show]
 
-  get 'alimentos/:id/delete', to: 'alimentos#delete', as: 'delete_alimento'
-
-  root 'dias#index'
+  root 'home#index'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

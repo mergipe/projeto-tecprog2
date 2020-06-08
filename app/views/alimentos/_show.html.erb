@@ -10,10 +10,10 @@
       <div class="modal-body">
       </div>
       <div class="modal-footer">
-        <% if @alimento.user_id == current_user.id %>
-          <%= button_to 'Editar', edit_user_alimento_path(current_user, @alimento),
+        <% if @alimento.user_id == @user.id %>
+          <%= button_to 'Editar', edit_user_alimento_path(@user, @alimento),
             method: :get, class: 'btn btn-primary' %>
-          <%= button_to 'Remover', [current_user, @alimento], method: :delete,
+          <%= button_to 'Remover', [@user, @alimento], method: :delete,
             data: { confirm: 'Tem certeza?' }, class: 'btn btn-danger' %>
         <% end %>
       </div>

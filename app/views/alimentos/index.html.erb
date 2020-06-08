@@ -3,7 +3,7 @@
     <h1>Meus alimentos</h1>
   </div>
   <div>
-    <%= button_to 'Criar alimento', new_user_alimento_path(current_user),
+    <%= button_to 'Criar alimento', new_user_alimento_path(@user),
       method: :get, class: "btn btn-primary" %>
   </div>
 </div>
@@ -21,8 +21,8 @@
     </tr>
   </thead>
 
-  <% current_user.alimentos.each do |alimento| %>
-    <tr data-href="<%= edit_user_alimento_path(current_user, alimento) %>">
+  <% @alimentos.each do |alimento| %>
+    <tr data-href="<%= edit_user_alimento_path(@user, alimento) %>">
       <td><%= alimento.nome_completo %></td>
       <td><%= alimento.tamanho_porcao %></td>
       <td><%= alimento.energia_kcal %></td>
