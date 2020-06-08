@@ -10,4 +10,22 @@ class Dia < ApplicationRecord
       dia = user.dias.create(data: today)
     end
   end
+
+  def self.string_array(dias)
+    dias_string = Array.new
+
+    dias.each do |dia|
+      if dia.data.today?
+        d = 'Hoje'
+      elsif dia.data == Date.yesterday
+        d = 'Ontem'
+      else
+        d = I18n.l(dia.data, format: '%A, %d de %B')
+      end
+
+      dias_string << d
+    end
+
+    return dias_string
+  end
 end

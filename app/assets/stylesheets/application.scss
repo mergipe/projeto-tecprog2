@@ -23,3 +23,12 @@
     cursor: pointer;
 }
 
+span.page-link {
+    pointer-events: none;
+}
+
+.btn:focus, .page-link:focus {
+    outline: none;
+    box-shadow: none;
+}
+
