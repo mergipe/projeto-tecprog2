@@ -1,5 +1,5 @@
 <%= bootstrap_form_with(model: [ current_user, @alimento ], local: true,
-  inline_errors: true) do |f| %>
+  inline_errors: true, html: { autocomplete: "off" }) do |f| %>
 
   <hr>
 
