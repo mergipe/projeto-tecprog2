@@ -5,6 +5,7 @@ class AlimentosController < ApplicationController
 
   def show
     @alimento = Alimento.find(params[:id])
+
     respond_to do |format|
       format.js
     end
@@ -46,6 +47,14 @@ class AlimentosController < ApplicationController
     @alimento.destroy
 
     redirect_to alimentos_path
+  end
+
+  def delete
+    @alimento = Alimento.find(params[:id])
+
+    respond_to do |format|
+      format.js
+    end
   end
 
   private

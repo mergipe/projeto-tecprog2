@@ -8,6 +8,8 @@ Rails.application.routes.draw do
 
   resources :alimentos, only: [:index, :show]
 
+  get 'alimentos/:id/delete', to: 'alimentos#delete', as: 'delete_alimento'
+
   root 'home#index'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

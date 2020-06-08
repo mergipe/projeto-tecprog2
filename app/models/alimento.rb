@@ -4,7 +4,7 @@ class Alimento < ApplicationRecord
   validates :nome, presence: true
   validates :porcao, presence: true, numericality: { greater_than_or_equal_to: 0 }
   validates :unidade, presence: true
-  validates :porcoes_pacote, presence: true, numericality: { greater_than_or_equal_to: 1 }
+  validates :porcoes_pacote, allow_nil:true, numericality: { greater_than_or_equal_to: 1 }
   validates :energia, presence: true, numericality: { greater_than_or_equal_to: 0 }
   validates :proteina, numericality: { greater_than_or_equal_to: 0 }
   validates :carb_total, numericality: { greater_than_or_equal_to: 0 }
