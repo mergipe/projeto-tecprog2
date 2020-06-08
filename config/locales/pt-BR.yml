@@ -1,0 +1,5 @@
+pt-BR:
+  number:
+    format:
+      separator: ','
+      delimiter: ''

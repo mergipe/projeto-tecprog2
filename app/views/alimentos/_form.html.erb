@@ -29,64 +29,67 @@
 
   <div class="row mt-4">
     <div class="col-3">
-      <%= f.text_field :energia, append: '(kcal)' %>
+      <%= f.text_field :energia, append: 'kcal' %>
     </div>
     <div class="col-3">
-      <%= f.text_field :carb_disp, label: 'Carboidrato disponível', append: "(g)" %>
+      <%= f.text_field :carb_disp, label: 'Carboidrato disponível', append: "g" %>
     </div>
     <div class="col-3">
-      <%= f.text_field :gord_total, label: 'Gordura total', append: "(g)" %>
+      <%= f.text_field :gord_total, label: 'Gordura total', append: "g" %>
     </div>
     <div class="col-3">
-      <%= f.text_field :gord_poli, label: 'Gordura poliinsaturada', append: "(g)" %>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="col-3">
-      <%= f.text_field :proteina, label: 'Proteína', append: "(g)" %>
-    </div>
-    <div class="col-3">
-      <%= f.text_field :fibra, label: 'Fibra alimentar', append: "(g)" %>
-    </div>
-    <div class="col-3">
-      <%= f.text_field :gord_sat, label: 'Gordura saturada', append: "(g)" %>
-    </div>
-    <div class="col-3">
-      <%= f.text_field :gord_trans, label: 'Gordura trans', append: "(g)" %>
+      <%= f.text_field :gord_poli, label: 'Gordura poliinsaturada', append: "g" %>
     </div>
   </div>
 
   <div class="row">
     <div class="col-3">
-      <%= f.text_field :carb_total, label: 'Carboidrato total', append: "(g)" %>
+      <%= f.text_field :proteina, label: 'Proteína', append: "g" %>
     </div>
     <div class="col-3">
-      <%= f.text_field :acucar, label: 'Açúcar', append: "(g)" %>
+      <%= f.text_field :fibra, label: 'Fibra alimentar', append: "g" %>
     </div>
     <div class="col-3">
-      <%= f.text_field :gord_mono, label: 'Gordura monoinsaturada', append: "(g)" %>
+      <%= f.text_field :gord_sat, label: 'Gordura saturada', append: "g" %>
     </div>
     <div class="col-3">
-      <%= f.text_field :colesterol, label: 'Colesterol', append: "(mg)" %>
+      <%= f.text_field :gord_trans, label: 'Gordura trans', append: "g" %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-3">
+      <%= f.text_field :carb_total, label: 'Carboidrato total', append: "g" %>
+    </div>
+    <div class="col-3">
+      <%= f.text_field :acucar, label: 'Açúcar', append: "g" %>
+    </div>
+    <div class="col-3">
+      <%= f.text_field :gord_mono, label: 'Gordura monoinsaturada', append: "g" %>
+    </div>
+    <div class="col-3">
+      <%= f.text_field :colesterol, label: 'Colesterol', append: "mg" %>
     </div>
   </div>
   
   <div class="row">
     <div class="col-3">
-      <%= f.text_field :sodio, label: 'Sódio', append: "(mg)" %>
+      <%= f.text_field :sodio, label: 'Sódio', append: "mg" %>
     </div>
   </div>
 
   <hr>
 
-  <div class="float-right mt-3">
-    <%= f.submit btn_text, class: 'btn btn-primary' %>
-
+  <div class="mt-4">
     <% if @alimento.persisted? %>
-      <%= button_to 'Remover', [current_user, @alimento], method: :delete,
-        data: { confirm: 'Tem certeza?' }, class: 'btn btn-danger ml-3' %>
+      <%= link_to 'Remover', [current_user, @alimento], method: :delete,
+        data: { confirm: 'Tem certeza?' }, class: 'btn btn-danger ml-2' %>
     <% end %>
+
+    <div class="float-right">
+      <%= f.submit btn_text, class: 'btn btn-primary' %>
+      <%= link_to 'Cancelar', alimentos_path, class: 'btn btn-primary ml-2' %>
+    </div>
   </div>
 
 <% end %>

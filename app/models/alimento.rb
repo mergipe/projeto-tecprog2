@@ -28,6 +28,31 @@ class Alimento < ApplicationRecord
   end
 
   def tamanho_porcao
-    return self.porcao.to_s + ' ' + self.unidade
+    return value_unidade(self.porcao, self.unidade)
   end
+
+  def energia_kcal
+    return value_unidade(self.energia, 'kcal')
+  end
+
+  def proteina_g
+    return value_unidade(self.proteina, 'g')
+  end
+
+  def carb_total_g
+    return value_unidade(self.carb_total, 'g')
+  end
+
+  def gord_total_g
+    return value_unidade(self.gord_total, 'g')
+  end
+
+  def fibra_g
+    return value_unidade(self.fibra, 'g')
+  end
+
+  private
+    def value_unidade(value, unidade)
+      return value.to_s + ' ' + unidade
+    end
 end

@@ -85,6 +85,8 @@ GEM
     chronic (0.10.2)
     concurrent-ruby (1.1.6)
     crass (1.0.6)
+    delocalize (1.2.0)
+      rails (>= 2)
     devise (4.7.1)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
@@ -263,6 +265,7 @@ DEPENDENCIES
   bootstrap_form (~> 4.0)
   byebug
   capybara (>= 2.15)
+  delocalize
   devise
   devise-i18n
   jbuilder (~> 2.7)

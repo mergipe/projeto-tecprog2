@@ -50,10 +50,15 @@ class AlimentosController < ApplicationController
 
   private
     def alimento_params
-      params.require(:alimento).permit(
-        :nome, :marca, :porcao, :unidade, :porcoes_pacote, :energia, :proteina,
-        :carb_total, :carb_disp, :fibra, :acucar, :gord_total, :gord_sat,
-        :gord_mono, :gord_poli, :gord_trans, :colesterol, :sodio
-      )
+      delocalize_config = { :porcao => :number, :porcoes_pacote => :number,
+        :energia => :number, :proteina => :number, :carb_total => :number,
+        :carb_disp => :number, :fibra => :number, :acucar => :number,
+        :gord_total => :number, :gord_sat => :number, :gord_mono => :number,
+        :gord_poli => :number, :gord_trans => :number, :colesterol => :number,
+        :sodio => :number }
+
+      params.require(:alimento)
+            .permit(:nome, :marca, :unidade, *delocalize_config.keys)
+            .delocalize(delocalize_config)
     end
 end
