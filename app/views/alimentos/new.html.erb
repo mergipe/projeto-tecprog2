@@ -1,8 +1,4 @@
-<div class="d-flex justify-content-between align-items-center mb-2">
-  <div>
-    <h1>Novo alimento</h1>
-  </div>
-</div>
+<h1>Novo alimento</h1>
 
 <%= render partial: 'form', locals: {alimento: current_user.alimentos.build,
   btn_text: 'Criar alimento'} %>

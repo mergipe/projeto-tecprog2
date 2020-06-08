@@ -1,11 +1,3 @@
-<div class="d-flex justify-content-between align-items-center mb-2">
-  <div>
-    <h1>Editar alimento</h1>
-  </div>
-  <div>
-    <%= button_to 'Remover', [current_user, @alimento], method: :delete,
-      data: { confirm: 'Tem certeza?' }, class: 'btn btn-danger' %>
-  </div>
-</div>
+<h1>Editar alimento</h1>
 
 <%= render partial: 'form', locals: {alimento: @alimento, btn_text: 'Salvar alterações'} %>
