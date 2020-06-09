@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   resources :users do
     resources :alimentos, only: [:index, :new, :edit, :create, :update, :destroy]
     get 'alimentos/:id/delete', to: 'alimentos#delete', as: 'delete_alimento'
-    resources :dias, only: [:index, :show]
+    resources :diario, only: [:index]
   end
 
   resources :alimentos, only: [:index, :show]
