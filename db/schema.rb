@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_08_145053) do
+ActiveRecord::Schema.define(version: 2020_06_09_033506) do
 
   create_table "alimentos", force: :cascade do |t|
     t.string "nome"
@@ -33,7 +33,7 @@ ActiveRecord::Schema.define(version: 2020_06_08_145053) do
     t.float "sodio"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "user_id", null: false
+    t.integer "user_id"
     t.index ["user_id"], name: "index_alimentos_on_user_id"
   end
 
