@@ -9,6 +9,8 @@ class DiarioController < ApplicationController
       @@current_date += 1
     elsif params[:mode] == 'prev'
       @@current_date -= 1
+    else
+      @@current_date = Date.today
     end
 
     lista_refeicoes()
