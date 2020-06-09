@@ -1,0 +1,32 @@
+<nav>
+  <ul class="pagination justify-content-center d-flex">
+    <li class="page-item">
+      <%= link_to '&laquo;'.html_safe,
+        user_diario_index_path(current_user, mode: 'prev'), method: 'get',
+        class: 'page-link', id: 'prev' %>
+    </li>
+    <li class="flex-fill">
+      <span class="page-link text-center" id="data">
+        <%= DiarioController.data_string() %>
+      </span>
+    </li>
+    <li class="page-item">
+      <%= link_to '&raquo;'.html_safe,
+        user_diario_index_path(current_user, mode: 'next'), method: 'get',
+        class: 'page-link', id: 'next' %>
+    </li>
+  </ul>
+</nav>
+
+<script>
+  $('#prev').click(function(e) {
+    e.preventDefault();
+    $('#data').text('<%= DiarioController.data_string() %>');
+  });
+
+  $('#next').click(function(e) {
+    e.preventDefault();
+    $('#data').text('<%= DiarioController.data_string() %>');
+  });
+
+</script>

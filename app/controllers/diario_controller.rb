@@ -1,17 +1,33 @@
 class DiarioController < ApplicationController
+
+  @@current_date = Date.today
+
   def index
     @user = User.find(params[:user_id])
+
+    if params[:mode] == 'next'
+      @@current_date += 1
+    elsif params[:mode] == 'prev'
+      @@current_date -= 1
+    end
+
+    lista_refeicoes()
   end
 
-  def self.data_string(data)
-    if data.today?
+  def self.data_string()
+    if @@current_date.today?
       return 'Hoje'
-    elsif data == Date.yesterday
+    elsif @@current_date == Date.yesterday
       return 'Ontem'
-    elsif data == Date.tomorrow
+    elsif @@current_date == Date.tomorrow
       return 'Amanhã'
     else
-      return I18n.l(data, format: '%A, %d de %B')
+      return I18n.l(@@current_date, format: '%A, %d de %B')
     end
   end
+
+  private
+    def lista_refeicoes
+      # Lista todas as refeições de @user no dia @current_date
+    end
 end
