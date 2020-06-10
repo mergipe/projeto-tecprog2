@@ -7,6 +7,7 @@ class User < ApplicationRecord
   before_destroy :destroy_alimentos
 
   has_many :alimentos
+  has_many :refeicoes, dependent: :destroy
 
   def destroy_alimentos
     alimentos.each do |alimento|

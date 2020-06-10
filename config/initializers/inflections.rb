@@ -16,5 +16,5 @@
 # end
 
 ActiveSupport::Inflector.inflections do |inflect|
-  inflect.irregular 'dia', 'dias'
+  inflect.irregular 'refeicao', 'refeicoes'
 end

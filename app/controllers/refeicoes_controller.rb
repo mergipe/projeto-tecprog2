@@ -1,0 +1,2 @@
+class RefeicoesController < ApplicationController
+end
