@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_12_032554) do
+ActiveRecord::Schema.define(version: 2020_06_12_141000) do
 
   create_table "alimentos", force: :cascade do |t|
     t.string "nome"
@@ -40,6 +40,7 @@ ActiveRecord::Schema.define(version: 2020_06_12_032554) do
   create_table "alimentos_refeicoes", id: false, force: :cascade do |t|
     t.integer "alimento_id", null: false
     t.integer "refeicao_id", null: false
+    t.float "porcao"
     t.index ["alimento_id", "refeicao_id"], name: "index_alimentos_refeicoes_on_alimento_id_and_refeicao_id"
   end
 
