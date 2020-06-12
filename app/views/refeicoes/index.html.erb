@@ -1,19 +1,19 @@
 <nav>
   <ul class="pagination justify-content-center d-flex">
     <li class="page-item">
-      <div class='page-link' id='prev'>
-        <span>&laquo;</span>
-      </div>
+      <%= link_to '&laquo;'.html_safe,
+        user_refeicoes_path(@user, data: @data - 1), 
+        class: 'page-link', id: 'prev' %>
     </li>
     <li class="flex-fill">
       <span class="page-link text-center" id="data">
-        <%= Diario.data_formatada(session[:data_selecionada]) %>
+        <%= Diario.data_formatada(@data) %>
       </span>
     </li>
     <li class="page-item">
-      <div class='page-link' id='next'>
-        <span>&raquo;</span>
-      </div>
+      <%= link_to '&raquo;'.html_safe,
+        user_refeicoes_path(@user, data: @data + 1), 
+        class: 'page-link', id: 'next' %>
     </li>
   </ul>
 </nav>
