@@ -10,4 +10,9 @@ class Diario
       return I18n.l(data, format: '%A, %d de %B')
     end
   end
+
+  def self.horario_formatado(horario)
+    puts horario.class
+    return horario.strftime("%H:%M")
+  end
 end

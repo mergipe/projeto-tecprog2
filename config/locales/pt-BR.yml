@@ -3,3 +3,8 @@ pt-BR:
     format:
       separator: ','
       delimiter: ''
+  time:
+    input:
+      formats: :time
+    format:
+      time: "%H:%M"

@@ -18,5 +18,18 @@
   </ul>
 </nav>
 
-<div id="refeicoes">
+<div class="d-flex pb-3">
+  <div class="float-left flex-fill" id="refeicoes">
+    <% @refeicoes.each do |refeicao| %>
+      <%= render partial: 'card', locals: {refeicao: refeicao} %>
+    <% end %>
+  </div>
+
+  <div class="float-right ml-4">
+    <%= link_to 'Adicionar refeição',
+      new_user_refeicao_path(@user, data: @data), remote: true,
+      class: 'btn btn-primary' %>
+  </div>
 </div>
+
+<div id="modal"></div>

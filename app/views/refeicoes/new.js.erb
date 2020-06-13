@@ -1,0 +1,9 @@
+$('#modal').html("<%= j render 'new' %>");
+
+if ($('body').find('.modal-backdrop').length) {
+  $('body').find('.modal-backdrop').remove();
+  $('#modal').find('.modal').removeClass('fade');
+}
+
+$('#modal').find('.modal').modal('show');
+$('#modal').find('.modal').addClass('fade');

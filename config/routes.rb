@@ -5,6 +5,7 @@ Rails.application.routes.draw do
     resources :alimentos, only: [:index, :new, :edit, :create, :update, :destroy]
     get 'alimentos/:id/delete', to: 'alimentos#delete', as: 'delete_alimento'
     resources :refeicoes
+    get 'refeicoes/:id/delete', to: 'refeicoes#delete', as: 'delete_refeicao'
   end
 
   resources :alimentos, only: [:index, :show]

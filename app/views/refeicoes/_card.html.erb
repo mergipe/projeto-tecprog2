@@ -1,0 +1,39 @@
+<div class="card mb-4">
+  <div class="card-header d-flex">
+    <div class="mr-auto">
+      <h5 class="card-title">
+        <%= refeicao.nome %>
+      </h5>
+      <h6 class="card-subtitle text-muted">
+        <%= Diario.horario_formatado(refeicao.horario) %>
+      </h6>
+    </div>
+
+    <%= link_to '&times;'.html_safe,
+      user_delete_refeicao_path(@user, refeicao, data: @data),
+      remote: true, class: 'close my-auto' %>
+  </div>
+
+  <% if not refeicao.alimentos.empty? %>
+    <div class="card-body">
+      <ul class="list-group list-group-flush">
+        <% refeicao.alimentos.each do |alimento| %>
+          <li class="list-group-item">
+            <%= alimento.nome_completo %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="card-footer">
+    <div class="float-right">
+      <%= link_to 'Adicionar alimento',
+        '', remote: true,
+        class: 'btn btn-primary' %>
+      <%= link_to 'Editar',
+        edit_user_refeicao_path(@user, refeicao, data: @data),
+        remote: true, class: 'btn btn-primary ml-2' %>
+    </div>
+  </div>
+</div>

@@ -5,4 +5,5 @@ class Refeicao < ApplicationRecord
   validates :nome, presence: true
   validates :data, presence: true
   validates :horario, presence: true
+  validates_time :horario
 end

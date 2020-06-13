@@ -1,10 +1,10 @@
 <%= render "shared/delete" do %>
   <div class="modal-body">
-    Deseja mesmo remover esse alimento?
+    Deseja mesmo remover essa refeição?
   </div>
 
   <div class="modal-footer">
-    <%= button_to 'Sim', [current_user, @alimento], method: :delete,
+    <%= button_to 'Sim', [@user, @refeicao, data: @data], method: :delete,
       class: 'btn btn-danger' %>
 
     <button type="button" class="btn btn-secondary" data-dismiss="modal">
