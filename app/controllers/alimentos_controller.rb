@@ -3,7 +3,8 @@ class AlimentosController < ApplicationController
     @user = User.find(params[:user_id])
     @meus_alimentos = @user.alimentos.search(params[:search])
 
-    if params[:all]
+    if params[:refeicao]
+      @refeicao = Refeicao.find(params[:refeicao])
       @todos_alimentos = Alimento.search(params[:search])
       render 'index_all'
     else

@@ -10,7 +10,7 @@
     </div>
 
     <%= link_to '&times;'.html_safe,
-      user_delete_refeicao_path(@user, refeicao, data: @data),
+      user_delete_refeicao_path(@user, refeicao),
       remote: true, class: 'close my-auto' %>
   </div>
 
@@ -29,10 +29,10 @@
   <div class="card-footer">
     <div class="float-right">
       <%= link_to 'Adicionar alimento',
-        user_alimentos_path(current_user, all: true), remote: true,
+        user_alimentos_path(@user, refeicao: refeicao),
         class: 'btn btn-primary' %>
       <%= link_to 'Editar',
-        edit_user_refeicao_path(@user, refeicao, data: @data),
+        edit_user_refeicao_path(@user, refeicao),
         remote: true, class: 'btn btn-primary ml-2' %>
     </div>
   </div>

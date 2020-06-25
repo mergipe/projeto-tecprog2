@@ -3,6 +3,13 @@ class RegistrosController < ApplicationController
   end
 
   def new
+    @user = User.find(params[:user_id])
+    @refeicao = Refeicao.find(params[:refeicao_id])
+    @alimento = Alimento.find(params[:alimento])
+
+    respond_to do |format|
+      format.js
+    end
   end
 
   def edit

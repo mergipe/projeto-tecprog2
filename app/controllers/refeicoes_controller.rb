@@ -21,7 +21,6 @@ class RefeicoesController < ApplicationController
 
   def edit
     @user = User.find(params[:user_id])
-    @data = params[:data]
     @refeicao = @user.refeicoes.find(params[:id])
   end
 
@@ -55,7 +54,7 @@ class RefeicoesController < ApplicationController
     @refeicao = @user.refeicoes.find(params[:id])
     @refeicao.destroy
 
-    redirect_to user_refeicoes_path(@user, data: @data)
+    redirect_to user_refeicoes_path(@user, data: @refeicao.data)
   end
 
   def delete
