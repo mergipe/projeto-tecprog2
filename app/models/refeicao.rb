@@ -1,6 +1,7 @@
 class Refeicao < ApplicationRecord
   belongs_to :user
-  has_and_belongs_to_many :alimentos
+  has_many :registros
+  has_many :alimentos, through: :registros
 
   validates :nome, presence: true
   validates :data, presence: true

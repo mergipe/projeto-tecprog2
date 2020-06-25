@@ -4,7 +4,7 @@ $('#tab-content').html("<%= j render partial: 'alimentos' %>");
 showLargeModal();
 
 $(function() {
-  $('#alimentos_search input').on('change paste keyup', function(e) {
+  $('#alimentos_search input').on('paste keyup', function(e) {
     $.get(
       $('#alimentos_search').attr('action'),
       $('#alimentos_search').serialize(),

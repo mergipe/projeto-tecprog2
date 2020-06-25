@@ -1,6 +1,5 @@
 class Alimento < ApplicationRecord
   belongs_to :user
-  has_and_belongs_to_many :refeicoes
 
   validates :nome, presence: true
   validates :porcao, presence: true, numericality:
