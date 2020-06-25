@@ -1,0 +1,14 @@
+<%= form_tag user_search_alimentos_path(@user),
+  method: 'get', remote: true,
+  class: 'form-inline', id: 'alimentos_search' do %>
+
+  <%= text_field_tag :search, params[:search],
+    class: 'form-control', placeholder: 'Pesquisar alimento' %>
+
+  <% if refeicao != nil %>
+    <%= hidden_field_tag :refeicao_id, @refeicao.id %>
+  <% end %>
+
+  <%= submit_tag '', style: 'display: none;' %>
+
+<% end %>

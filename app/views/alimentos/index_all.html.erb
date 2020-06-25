@@ -18,17 +18,13 @@
     </li>
   </ul>
 
-  <%= form_tag user_search_alimentos_path(@user), method: 'get',
-    remote: true, class: 'form-inline', id: 'alimentos_search' do %>
-    <%= text_field_tag :search, params[:search],
-      class: 'form-control mb-1', placeholder: 'Pesquisar alimento' %>
-    <%= hidden_field_tag :all, params[:all] %>
-    <%= submit_tag '', style: 'display: none;' %>
-  <% end %>
+  <div class="mb-1">
+    <%= render partial: 'search_form', locals: {refeicao: @refeicao} %>
+  </div>
 </div>
 
-<div>
-  <%= render partial: 'alimentos' %>
+<div id="tab-content">
+  <%= render partial: 'tabs' %>
 </div>
 
 <%= link_to 'Cancelar', user_refeicoes_path(@user, data: @refeicao.data),

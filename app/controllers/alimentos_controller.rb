@@ -63,9 +63,14 @@ class AlimentosController < ApplicationController
   def search
     @user = User.find(params[:user_id])
     @meus_alimentos = @user.alimentos.search(params[:search])
-    @todos_alimentos = Alimento.search(params[:search])
 
-    render 'alimentos'
+    if params[:refeicao_id]
+      @todos_alimentos = Alimento.search(params[:search])
+      @refeicao = params[:refeicao_id]
+      render 'tabs'
+    else
+      render 'table'
+    end
   end
 
   def delete

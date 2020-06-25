@@ -2,34 +2,17 @@
   <div>
     <h1>Meus alimentos</h1>
   </div>
+
+  <div class="ml-auto mr-4">
+    <%= render partial: 'search_form', locals: {refeicao: @refeicao} %>
+  </div>
+
   <div>
     <%= button_to 'Criar alimento', new_user_alimento_path(@user),
       method: :get, class: "btn btn-primary" %>
   </div>
 </div>
 
-<table class="table table-hover">
-  <thead class="thead-dark">
-    <tr>
-      <th scope="col">Descrição</th>
-      <th scope="col">Porção</th>
-      <th scope="col">Energia</th>
-      <th scope="col">Proteína</th>
-      <th scope="col">Carboidratos</th>
-      <th scope="col">Lipídeos</th>
-      <th scope="col">Fibras</th>
-    </tr>
-  </thead>
-
-  <% @meus_alimentos.each do |alimento| %>
-    <tr data-href="<%= edit_user_alimento_path(@user, alimento) %>">
-      <td><%= alimento.nome_completo %></td>
-      <td><%= alimento.tamanho_porcao %></td>
-      <td><%= alimento.energia_kcal %></td>
-      <td><%= alimento.proteina_g %></td>
-      <td><%= alimento.carb_total_g %></td>
-      <td><%= alimento.gord_total_g %></td>
-      <td><%= alimento.fibra_g %></td>
-    </tr>
-  <% end %>
-</table>
+<div id="table-content">
+  <%= render partial: 'table' %>
+</div>
