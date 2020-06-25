@@ -12,3 +12,7 @@
   <%= submit_tag '', style: 'display: none;' %>
 
 <% end %>
+
+<% content_for :javascript_includes do %>
+  <%= javascript_include_tag "search.js" %>
+<% end %>

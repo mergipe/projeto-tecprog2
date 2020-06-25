@@ -23,3 +23,7 @@
     </tr>
   <% end %>
 </table>
+
+<% content_for :javascript_includes do %>
+  <%= javascript_include_tag 'table', 'data-turbolinks-track' => true  %>
+<% end %>
