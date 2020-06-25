@@ -1,0 +1,15 @@
+$('#modal').html("<%= j render 'index_all' %>");
+$('#tab-content').html("<%= j render partial: 'alimentos' %>");
+
+showLargeModal();
+
+$(function() {
+  $('#alimentos_search input').on('change paste keyup', function(e) {
+    $.get(
+      $('#alimentos_search').attr('action'),
+      $('#alimentos_search').serialize(),
+      null,
+      'script'
+    );
+  });
+});

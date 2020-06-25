@@ -32,31 +32,50 @@ class Alimento < ApplicationRecord
   end
 
   def tamanho_porcao
-    return value_unidade(self.porcao, self.unidade)
+    return valor_unidade(self.porcao, self.unidade)
+  end
+
+  def marca_porcao
+    texto = ''
+
+    if not self.marca.empty?
+      texto += self.marca + ', '
+    end
+
+    texto += self.tamanho_porcao
+    return texto
   end
 
   def energia_kcal
-    return value_unidade(self.energia, 'kcal')
+    return valor_unidade(self.energia, 'kcal')
   end
 
   def proteina_g
-    return value_unidade(self.proteina, 'g')
+    return valor_unidade(self.proteina, 'g')
   end
 
   def carb_total_g
-    return value_unidade(self.carb_total, 'g')
+    return valor_unidade(self.carb_total, 'g')
   end
 
   def gord_total_g
-    return value_unidade(self.gord_total, 'g')
+    return valor_unidade(self.gord_total, 'g')
   end
 
   def fibra_g
-    return value_unidade(self.fibra, 'g')
+    return valor_unidade(self.fibra, 'g')
+  end
+
+  def self.search(search)
+    if search
+      where('nome LIKE ?', "%#{search}%")
+    else
+      where(nil)
+    end
   end
 
   private
-    def value_unidade(value, unidade)
-      return value.to_s + ' ' + unidade
+    def valor_unidade(valor, unidade)
+      return valor.to_s + ' ' + unidade
     end
 end

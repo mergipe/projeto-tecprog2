@@ -1,0 +1,15 @@
+<div class="list-group list-group-flush">
+  <% alimentos.each do |alimento| %>
+    <%= link_to '',
+      class: 'list-group-item list-group-item-action d-flex
+      justify-content-between' do %>
+      <div>
+        <p class="mb-0"><%= alimento.nome %></p>
+        <small>
+          <%= alimento.marca_porcao %>
+        </small>
+      </div>
+      <span class="my-auto"><%= alimento.energia_kcal %></span>
+    <% end %>
+  <% end %>
+</div>

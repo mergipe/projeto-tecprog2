@@ -1,4 +1,11 @@
 pt-BR:
+  activerecord:
+    errors:
+      models:
+        refeicao:
+          attributes:
+            horario:
+              invalid_time: "horário inválido"
   number:
     format:
       separator: ','

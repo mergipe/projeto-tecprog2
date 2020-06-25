@@ -12,7 +12,10 @@ class Diario
   end
 
   def self.horario_formatado(horario)
-    puts horario.class
-    return horario.strftime("%H:%M")
+    if horario != nil
+      return horario.strftime("%H:%M")
+    else
+      return nil
+    end
   end
 end

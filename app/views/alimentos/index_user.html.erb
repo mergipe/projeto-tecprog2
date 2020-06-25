@@ -21,7 +21,7 @@
     </tr>
   </thead>
 
-  <% @alimentos.each do |alimento| %>
+  <% @meus_alimentos.each do |alimento| %>
     <tr data-href="<%= edit_user_alimento_path(@user, alimento) %>">
       <td><%= alimento.nome_completo %></td>
       <td><%= alimento.tamanho_porcao %></td>

@@ -1,10 +1,13 @@
 class AlimentosController < ApplicationController
   def index
-    if params[:user_id] == nil
-      @alimentos = Alimento.all
+    @user = User.find(params[:user_id])
+    @meus_alimentos = @user.alimentos.search(params[:search])
+
+    if params[:all]
+      @todos_alimentos = Alimento.search(params[:search])
+      render 'index_all'
     else
-      @user = User.find(params[:user_id])
-      @alimentos = @user.alimentos.all
+      render 'index_user'
     end
   end
 
@@ -54,6 +57,14 @@ class AlimentosController < ApplicationController
     @alimento.destroy
 
     redirect_to user_alimentos_path(@user)
+  end
+
+  def search
+    @user = User.find(params[:user_id])
+    @meus_alimentos = @user.alimentos.search(params[:search])
+    @todos_alimentos = Alimento.search(params[:search])
+
+    render 'alimentos'
   end
 
   def delete
