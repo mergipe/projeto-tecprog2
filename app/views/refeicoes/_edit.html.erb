@@ -1,6 +1,3 @@
-<%= render "shared/modal" do %>
-  <%= render partial: 'form', locals: {
-    title: 'Editar refeição',
-    btn_text: 'Salvar'
-  } %>
+<%= render "shared/modal", title: 'Editar refeição' do %>
+  <%= render partial: 'form', locals: {btn_text: 'Salvar'} %>
 <% end %>
