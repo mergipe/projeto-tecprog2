@@ -1,0 +1,17 @@
+<%= bootstrap_form_with(model: [ @user, @refeicao,  @registro ], remote: true,
+  inline_errors: true, html: { autocomplete: "off" }) do |f| %>
+
+  <div class="modal-body">
+    <%= hidden_field_tag :alimento_id, @alimento.id %>
+    <%= f.text_field :porcao, label: 'Porção' %>
+  </div>
+
+  <div class="modal-footer">
+    <%= f.submit btn_text, class: 'btn btn-primary' %>
+
+    <button type="button" class="btn btn-secondary" data-dismiss="modal">
+      Cancelar
+    </button>
+  </div>
+
+<% end %>

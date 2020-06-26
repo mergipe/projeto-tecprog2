@@ -5,7 +5,8 @@ class RegistrosController < ApplicationController
   def new
     @user = User.find(params[:user_id])
     @refeicao = Refeicao.find(params[:refeicao_id])
-    @alimento = Alimento.find(params[:alimento])
+    @alimento = Alimento.find(params[:alimento_id])
+    @registro = Registro.new
 
     respond_to do |format|
       format.js
@@ -16,6 +17,16 @@ class RegistrosController < ApplicationController
   end
 
   def create
+    @user = User.find(params[:user_id])
+    @refeicao = Refeicao.find(params[:refeicao_id])
+    @alimento = Alimento.find(params[:alimento_id])
+    @registro = @refeicao.registros.create(registro_params)
+
+    if @registro.save
+      redirect_to user_alimentos_path(@user, refeicao: @refeicao)
+    else
+      render 'new'
+    end
   end
 
   def update
@@ -27,8 +38,9 @@ class RegistrosController < ApplicationController
   private
     def registro_params
       delocalize_config = { :porcao => :number }
+      params[:registro][:alimento_id] = @alimento.id
       params.require(:registro)
-            .permit(*delocalize_config.keys)
+            .permit(*delocalize_config.keys, :alimento_id)
             .delocalize(delocalize_config)
     end
 end
