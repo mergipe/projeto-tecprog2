@@ -2,8 +2,13 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
-.list-group {
-    height: 40vh;
+.scroll {
+    max-height: 50vh;
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
+}
+
+.table thead th {
+    position: sticky;
+    top: 0;
 }

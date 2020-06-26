@@ -1,4 +1,4 @@
-<div class="list-group list-group-flush">
+<div class="list-group list-group-flush scroll">
   <% alimentos.each do |alimento| %>
     <%= link_to new_user_refeicao_registro_path(@user, @refeicao, alimento_id: alimento.id),
       class: 'list-group-item list-group-item-action d-flex

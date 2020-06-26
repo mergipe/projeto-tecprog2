@@ -23,9 +23,7 @@
   </div>
 </div>
 
-<div id="tab-content">
-  <%= render partial: 'tabs' %>
-</div>
+<%= render partial: 'tabs' %>
 
 <%= link_to 'Cancelar', user_refeicoes_path(@user, data: @refeicao.data),
   class: 'btn btn-secondary float-right mt-4' %>
