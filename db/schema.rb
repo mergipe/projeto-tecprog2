@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_27_213456) do
+ActiveRecord::Schema.define(version: 2020_06_27_214636) do
 
   create_table "alimentos", force: :cascade do |t|
     t.string "nome"
@@ -37,6 +37,12 @@ ActiveRecord::Schema.define(version: 2020_06_27_213456) do
     t.index ["user_id"], name: "index_alimentos_on_user_id"
   end
 
+  create_table "alimentos_medidas", id: false, force: :cascade do |t|
+    t.integer "alimento_id", null: false
+    t.integer "medida_id", null: false
+    t.index ["alimento_id", "medida_id"], name: "index_alimentos_medidas_on_alimento_id_and_medida_id"
+  end
+
   create_table "medidas", force: :cascade do |t|
     t.float "quantidade"
     t.string "unidade"
@@ -60,7 +66,9 @@ ActiveRecord::Schema.define(version: 2020_06_27_213456) do
     t.integer "refeicao_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "medida_id", null: false
     t.index ["alimento_id"], name: "index_registros_on_alimento_id"
+    t.index ["medida_id"], name: "index_registros_on_medida_id"
     t.index ["refeicao_id"], name: "index_registros_on_refeicao_id"
   end
 
@@ -80,5 +88,6 @@ ActiveRecord::Schema.define(version: 2020_06_27_213456) do
   add_foreign_key "alimentos", "users"
   add_foreign_key "refeicoes", "users"
   add_foreign_key "registros", "alimentos"
+  add_foreign_key "registros", "medidas"
   add_foreign_key "registros", "refeicoes"
 end
