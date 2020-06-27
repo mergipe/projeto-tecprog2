@@ -10,9 +10,12 @@ macronutrientes consumidos seja atualizado de acordo com o que for registrado.
 
 ## To do
 
-- arrumar scroll da tabela de alimentos
-- arrumar tamanho da lista/tabela de alimentos
-- criar model Medida(quantidade, unidade), que será usado por alimentos e
-registros
--- alimentos têm várias Medidas
--- registros têm uma Medida
+- arrumar scroll da tabela de Alimentos
+- arrumar tamanho da lista/tabela de Alimentos
+- criar model Medida(quantidade, unidade), que será usado por Alimentos e
+Registros
+    - Alimentos têm várias Medidas
+    - Registros têm uma Medida
+- implementar Metas
+- melhorar o layout de Diário
+- deixar usuário mudar a senha
