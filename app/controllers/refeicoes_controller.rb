@@ -50,7 +50,6 @@ class RefeicoesController < ApplicationController
 
   def destroy
     @user = User.find(params[:user_id])
-    @data = params[:data]
     @refeicao = @user.refeicoes.find(params[:id])
     @refeicao.destroy
 
@@ -59,7 +58,6 @@ class RefeicoesController < ApplicationController
 
   def delete
     @user = User.find(params[:user_id])
-    @data = params[:data]
     @refeicao = @user.refeicoes.find(params[:id])
 
     respond_to do |format|

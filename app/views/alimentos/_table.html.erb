@@ -24,6 +24,9 @@
   <% end %>
 </table>
 
-<% content_for :javascript_includes do %>
-  <%= javascript_include_tag 'table' %>
-<% end %>
+<script>
+  $("tr[data-href]").click(function() {
+      var link = $(this).data('href');
+      window.location = link;
+  });
+</script>

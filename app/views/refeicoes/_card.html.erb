@@ -8,18 +8,29 @@
         <%= Diario.horario_formatado(refeicao.horario) %>
       </h6>
     </div>
-
-    <%= link_to '&times;'.html_safe,
-      user_delete_refeicao_path(@user, refeicao),
-      remote: true, class: 'close my-auto' %>
   </div>
 
   <% if not refeicao.alimentos.empty? %>
-    <div class="card-body">
+    <div class="card-body m-0 p-0">
       <ul class="list-group list-group-flush">
-        <% refeicao.alimentos.each do |alimento| %>
-          <li class="list-group-item">
-            <%= alimento.nome_completo %>
+        <% refeicao.registros.each do |registro| %>
+          <li class="list-group-item d-flex list-group-item-action">
+            <%= link_to edit_user_refeicao_registro_path(
+                  @user, refeicao, registro, alimento_id: registro.alimento
+                ),
+                class: 'list-group-item-action d-flex
+                justify-content-between', remote: true do %>
+              <div>
+                <p class="mb-0"><%= registro.alimento.nome %></p>
+                <small>
+                  Valor energético, carboidrato, proteína e gordura
+                </small>
+              </div>
+            <% end %>
+
+            <%= link_to '&times;'.html_safe,
+              user_refeicao_delete_registro_path(@user, refeicao, registro),
+              remote: true, class: 'close my-auto ml-3' %>
           </li>
         <% end %>
       </ul>
@@ -27,6 +38,10 @@
   <% end %>
 
   <div class="card-footer">
+    <%= link_to 'Remover',
+      user_delete_refeicao_path(@user, refeicao),
+      remote: true, class: 'btn btn-danger' %>
+
     <div class="float-right">
       <%= link_to 'Adicionar alimento',
         user_alimentos_path(@user, refeicao: refeicao),

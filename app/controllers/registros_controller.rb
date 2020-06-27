@@ -1,7 +1,4 @@
 class RegistrosController < ApplicationController
-  def index
-  end
-
   def new
     @user = User.find(params[:user_id])
     @refeicao = Refeicao.find(params[:refeicao_id])
@@ -14,6 +11,10 @@ class RegistrosController < ApplicationController
   end
 
   def edit
+    @user = User.find(params[:user_id])
+    @refeicao = Refeicao.find(params[:refeicao_id])
+    @alimento = Alimento.find(params[:alimento_id])
+    @registro = @refeicao.registros.find(params[:id])
   end
 
   def create
@@ -30,9 +31,35 @@ class RegistrosController < ApplicationController
   end
 
   def update
+    @user = User.find(params[:user_id])
+    @refeicao = Refeicao.find(params[:refeicao_id])
+    @alimento = Alimento.find(params[:alimento_id])
+    @registro = @refeicao.registros.find(params[:id])
+
+    if @registro.update(registro_params)
+      redirect_to user_refeicoes_path(@user, data: @refeicao.data)
+    else
+      render 'edit'
+    end
   end
 
   def destroy
+    @user = User.find(params[:user_id])
+    @refeicao = Refeicao.find(params[:refeicao_id])
+    @registro = @refeicao.registros.find(params[:id])
+    @registro.destroy
+
+    redirect_to user_refeicoes_path(@user, data: @refeicao.data)
+  end
+
+  def delete
+    @user = User.find(params[:user_id])
+    @refeicao = Refeicao.find(params[:refeicao_id])
+    @registro = @refeicao.registros.find(params[:id])
+
+    respond_to do |format|
+      format.js
+    end
   end
 
   private

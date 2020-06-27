@@ -1,11 +1,15 @@
 class Alimento < ApplicationRecord
+  UNIDADE = 1
+  PORCAO = 2
+  PACOTE = 3
+
   belongs_to :user
 
   validates :nome, presence: true
   validates :porcao, presence: true, numericality:
     { greater_than_or_equal_to: 0 }
   validates :unidade, presence: true
-  validates :porcoes_pacote, allow_nil:true,
+  validates :porcoes_pacote, allow_nil: true,
     numericality: { greater_than_or_equal_to: 1 }
   validates :energia, presence: true, numericality:
     { greater_than_or_equal_to: 0 }
@@ -34,6 +38,23 @@ class Alimento < ApplicationRecord
     return valor_unidade(self.porcao, self.unidade)
   end
 
+  def tamanho_pacote
+    return valor_unidade(self.porcoes_pacote, self.unidade)
+  end
+
+  def opcoes_porcao
+    opcoes = [
+      [self.unidade, UNIDADE],
+      ['porção (' + self.tamanho_porcao + ')', PORCAO]
+    ]
+
+    if self.porcoes_pacote != nil
+      opcoes.append(['pacote (' + self.tamanho_pacote + ')', PACOTE])
+    end
+    
+    return opcoes
+  end
+
   def marca_porcao
     texto = ''
 
@@ -43,6 +64,30 @@ class Alimento < ApplicationRecord
 
     texto += self.tamanho_porcao
     return texto
+  end
+
+  def update_nutrients(quantidade, tipo)
+    fator = quantidade.to_f / self.porcao
+
+    if tipo == PORCAO
+      fator = quantidade
+    elsif tipo == PACOTE
+      fator = self.porcoes_pacote.to_f / self.porcao * quantidade
+    end
+
+    self.energia *= fator
+    self.proteina *= fator
+    self.carb_total *= fator
+    self.carb_disp *= fator
+    self.fibra *= fator
+    self.acucar *= fator
+    self.gord_total *= fator
+    self.gord_sat *= fator
+    self.gord_mono *= fator
+    self.gord_poli *= fator
+    self.gord_trans *= fator
+    self.colesterol *= fator
+    self.sodio *= fator
   end
 
   def energia_kcal
