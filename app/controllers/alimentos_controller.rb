@@ -15,7 +15,7 @@ class AlimentosController < ApplicationController
   def new
     @user = User.find(params[:user_id])
     @alimento = Alimento.new
-    @alimento.medidas.build
+    @alimento.porcoes_referencia.build
   end
 
   def edit
@@ -85,7 +85,7 @@ class AlimentosController < ApplicationController
 
       params.require(:alimento)
             .permit(:nome, :marca, *delocalize_config.keys,
-                    medidas_attributes: [:id, :quantidade, :unidade])
+                    porcoes_referencia_attributes: [:id, :quantidade, :unidade])
             .delocalize(delocalize_config)
     end
 end

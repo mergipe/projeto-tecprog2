@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_27_215905) do
+ActiveRecord::Schema.define(version: 2020_06_28_022644) do
 
   create_table "alimentos", force: :cascade do |t|
     t.string "nome"
@@ -34,17 +34,13 @@ ActiveRecord::Schema.define(version: 2020_06_27_215905) do
     t.index ["user_id"], name: "index_alimentos_on_user_id"
   end
 
-  create_table "alimentos_medidas", id: false, force: :cascade do |t|
-    t.integer "alimento_id", null: false
-    t.integer "medida_id", null: false
-    t.index ["alimento_id", "medida_id"], name: "index_alimentos_medidas_on_alimento_id_and_medida_id"
-  end
-
-  create_table "medidas", force: :cascade do |t|
+  create_table "porcao_referencia", force: :cascade do |t|
     t.float "quantidade"
     t.string "unidade"
+    t.integer "alimento_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["alimento_id"], name: "index_porcao_referencia_on_alimento_id"
   end
 
   create_table "refeicoes", force: :cascade do |t|
@@ -62,9 +58,9 @@ ActiveRecord::Schema.define(version: 2020_06_27_215905) do
     t.integer "refeicao_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "medida_id", null: false
+    t.float "quantidade"
+    t.string "unidade"
     t.index ["alimento_id"], name: "index_registros_on_alimento_id"
-    t.index ["medida_id"], name: "index_registros_on_medida_id"
     t.index ["refeicao_id"], name: "index_registros_on_refeicao_id"
   end
 
@@ -82,8 +78,8 @@ ActiveRecord::Schema.define(version: 2020_06_27_215905) do
   end
 
   add_foreign_key "alimentos", "users"
+  add_foreign_key "porcao_referencia", "alimentos"
   add_foreign_key "refeicoes", "users"
   add_foreign_key "registros", "alimentos"
-  add_foreign_key "registros", "medidas"
   add_foreign_key "registros", "refeicoes"
 end

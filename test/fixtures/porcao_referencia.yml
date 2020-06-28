@@ -3,7 +3,9 @@
 one:
   quantidade: 1.5
   unidade: MyString
+  alimento: one
 
 two:
   quantidade: 1.5
   unidade: MyString
+  alimento: two

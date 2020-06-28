@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class MedidaTest < ActiveSupport::TestCase
+class PorcaoReferenciaTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

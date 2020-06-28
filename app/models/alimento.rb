@@ -1,7 +1,8 @@
 class Alimento < ApplicationRecord
   belongs_to :user
-  has_and_belongs_to_many :medidas
-  accepts_nested_attributes_for :medidas
+  has_many :porcoes_referencia, class_name: 'PorcaoReferencia',
+    dependent: :destroy
+  accepts_nested_attributes_for :porcoes_referencia
 
   validates :nome, presence: true
   validates :energia, presence: true, numericality:
@@ -28,12 +29,15 @@ class Alimento < ApplicationRecord
   end
 
   def tamanho_porcao
-    return valor_unidade(self.medidas.first.quantidade, self.medidas.first.unidade)
+    return valor_unidade(
+      self.porcoes_referencia.first.quantidade,
+      self.porcoes_referencia.first.unidade
+    )
   end
 
   def opcoes_porcao
     opcoes = []
-    self.medidas.each_with_index { |m, i| opcoes.append(m.unidade) }
+    self.porcoes_referencia.each_with_index { |p, i| opcoes.append(p.unidade) }
     return opcoes
   end
 

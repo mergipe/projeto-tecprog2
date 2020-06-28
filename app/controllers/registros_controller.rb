@@ -4,7 +4,6 @@ class RegistrosController < ApplicationController
     @refeicao = Refeicao.find(params[:refeicao_id])
     @alimento = Alimento.find(params[:alimento_id])
     @registro = Registro.new
-    @registro.build_medida
 
     respond_to do |format|
       format.js
@@ -65,11 +64,10 @@ class RegistrosController < ApplicationController
 
   private
     def registro_params
-      delocalize_config = { :porcao => :number }
+      delocalize_config = { :quantidade => :number }
       params[:registro][:alimento_id] = @alimento.id
       params.require(:registro)
-            .permit(*delocalize_config.keys, :alimento_id,
-                    medida_attributes: [:id, :quantidade, :unidade])
+            .permit(:unidade, *delocalize_config.keys, :alimento_id)
             .delocalize(delocalize_config)
     end
 end
