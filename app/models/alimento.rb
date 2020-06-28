@@ -28,11 +28,9 @@ class Alimento < ApplicationRecord
     end
   end
 
-  def tamanho_porcao
-    return valor_unidade(
-      self.porcoes_referencia.first.quantidade,
-      self.porcoes_referencia.first.unidade
-    )
+  def porcao_referencia
+    return self.porcoes_referencia.first.quantidade.to_s + ' ' +
+           self.porcoes_referencia.first.unidade
   end
 
   def opcoes_porcao
@@ -48,86 +46,60 @@ class Alimento < ApplicationRecord
       texto += self.marca + ', '
     end
 
-    texto += self.tamanho_porcao
+    texto += self.porcao_referencia
     return texto
   end
 
-  def energia_kcal(quantidade=self.porcoes_referencia.first.quantidade,
-                   unidade=self.porcoes_referencia.first.unidade)
-    transformado = transforma_valor(self.energia, quantidade, unidade)
-    return valor_unidade(transformado, 'kcal')
+  def energia_porcao(quantidade, unidade)
+    return nutriente_porcao(self.energia, quantidade, unidade)
   end
 
-  def proteina_g(quantidade=self.porcoes_referencia.first.quantidade,
-                 unidade=self.porcoes_referencia.first.unidade)
-    transformado = transforma_valor(self.proteina, quantidade, unidade)
-    return valor_unidade(transformado, 'g')
+  def proteina_porcao(quantidade, unidade)
+    return nutriente_porcao(self.proteina, quantidade, unidade)
   end
 
-  def carb_total_g(quantidade=self.porcoes_referencia.first.quantidade,
-                   unidade=self.porcoes_referencia.first.unidade)
-    transformado = transforma_valor(self.carb_total, quantidade, unidade)
-    return valor_unidade(transformado, 'g')
+  def carb_total_porcao(quantidade, unidade)
+    return nutriente_porcao(self.carb_total, quantidade, unidade)
   end
 
-  def carb_disp_g(quantidade=self.porcoes_referencia.first.quantidade,
-                  unidade=self.porcoes_referencia.first.unidade)
-    transformado = transforma_valor(self.carb_disp, quantidade, unidade)
-    return valor_unidade(transformado, 'g')
+  def carb_disp_porcao(quantidade, unidade)
+    return nutriente_porcao(self.carb_disp, quantidade, unidade)
   end
 
-  def fibra_g(quantidade=self.porcoes_referencia.first.quantidade,
-              unidade=self.porcoes_referencia.first.unidade)
-    transformado = transforma_valor(self.fibra, quantidade, unidade)
-    return valor_unidade(transformado, 'g')
+  def fibra_porcao(quantidade, unidade)
+    return nutriente_porcao(self.fibra, quantidade, unidade)
   end
 
-  def acucar_g(quantidade=self.porcoes_referencia.first.quantidade,
-               unidade=self.porcoes_referencia.first.unidade)
-    transformado = transforma_valor(self.acucar, quantidade, unidade)
-    return valor_unidade(transformado, 'g')
+  def acucar_porcao(quantidade, unidade)
+    return nutriente_porcao(self.acucar, quantidade, unidade)
   end
 
-  def gord_total_g(quantidade=self.porcoes_referencia.first.quantidade,
-                   unidade=self.porcoes_referencia.first.unidade)
-    transformado = transforma_valor(self.gord_total, quantidade, unidade)
-    return valor_unidade(transformado, 'g')
+  def gord_total_porcao(quantidade, unidade)
+    return nutriente_porcao(self.gord_total, quantidade, unidade)
   end
 
-  def gord_sat_g(quantidade=self.porcoes_referencia.first.quantidade,
-                 unidade=self.porcoes_referencia.first.unidade)
-    transformado = transforma_valor(self.gord_sat, quantidade, unidade)
-    return valor_unidade(transformado, 'g')
+  def gord_sat_porcao(quantidade, unidade)
+    return nutriente_porcao(self.gord_sat, quantidade, unidade)
   end
 
-  def gord_mono_g(quantidade=self.porcoes_referencia.first.quantidade,
-                  unidade=self.porcoes_referencia.first.unidade)
-    transformado = transforma_valor(self.gord_mono, quantidade, unidade)
-    return valor_unidade(transformado, 'g')
+  def gord_mono_porcao(quantidade, unidade)
+    return nutriente_porcao(self.gord_mono, quantidade, unidade)
   end
 
-  def gord_poli_g(quantidade=self.porcoes_referencia.first.quantidade,
-                  unidade=self.porcoes_referencia.first.unidade)
-    transformado = transforma_valor(self.gord_poli, quantidade, unidade)
-    return valor_unidade(transformado, 'g')
+  def gord_poli_porcao(quantidade, unidade)
+    return nutriente_porcao(self.gord_poli, quantidade, unidade)
   end
 
-  def gord_trans_g(quantidade=self.porcoes_referencia.first.quantidade,
-                 unidade=self.porcoes_referencia.first.unidade)
-    transformado = transforma_valor(self.gord_trans, quantidade, unidade)
-    return valor_unidade(transformado, 'g')
+  def gord_trans_porcao(quantidade, unidade)
+    return nutriente_porcao(self.gord_trans, quantidade, unidade)
   end
 
-  def colesterol_mg(quantidade=self.porcoes_referencia.first.quantidade,
-                 unidade=self.porcoes_referencia.first.unidade)
-    transformado = transforma_valor(self.colesterol, quantidade, unidade)
-    return valor_unidade(transformado, 'mg')
+  def colesterol_porcao(quantidade, unidade)
+    return nutriente_porcao(self.colesterol, quantidade, unidade)
   end
 
-  def sodio_mg(quantidade=self.porcoes_referencia.first.quantidade,
-            unidade=self.porcoes_referencia.first.unidade)
-    transformado = transforma_valor(self.sodio, quantidade, unidade)
-    return valor_unidade(transformado, 'mg')
+  def sodio_porcao(quantidade, unidade)
+    return nutriente_porcao(self.sodio, quantidade, unidade)
   end
 
   def self.search(search)
@@ -139,11 +111,7 @@ class Alimento < ApplicationRecord
   end
 
   private
-    def valor_unidade(valor, unidade)
-      return valor.to_s + ' ' + unidade
-    end
-
-    def transforma_valor(attr, quantidade, unidade)
+    def nutriente_porcao(attr, quantidade, unidade)
       porcao_ref = self.porcoes_referencia.where('unidade=?', unidade).first
       return attr * quantidade.to_f / porcao_ref.quantidade
     end

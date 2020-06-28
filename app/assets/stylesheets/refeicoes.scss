@@ -1,3 +1,21 @@
 // Place all the styles related to the Refeicoes controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+.list-inline {
+    margin-bottom: 0;
+    li {
+        &:last-child:after {
+            content: '';
+        }
+    }
+}
+
+.list-inline-item {
+    margin-right: 8px;
+    &:after {
+        font-size: 0.8em;
+        content: '•';
+        margin-left: 8px;
+    }
+}
