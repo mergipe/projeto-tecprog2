@@ -3,15 +3,19 @@
 
   <div class="modal-body">
     <%= hidden_field_tag :alimento_id, @alimento.id %>
-    <div class="row">
-      <div class="col-2">
-        <%= f.text_field :porcao, label: 'Porção',
-          value: f.object.new_record? ? @alimento.porcao : @registro.porcao %>
+
+    <%= f.fields_for :medida do |m| %>
+      <div class="row">
+        <div class="col-2">
+          <%= m.text_field :quantidade, label: 'Porção',
+            value: f.object.new_record? ?
+            @alimento.medidas.first.quantidade : @registro.medida.quantidade %>
+        </div>
+        <div class="col-4">
+          <%= m.select :unidade, @alimento.opcoes_porcao %>
+        </div>
       </div>
-      <div class="col-4">
-        <%= f.select :unidade, @alimento.opcoes_porcao %>
-      </div>
-    </div>
+    <% end %>
   </div>
 
   <div class="modal-footer">

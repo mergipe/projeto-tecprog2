@@ -12,19 +12,19 @@
     </div>
   </div>
 
-  <div class="row">
-    <div class="col-3">
-      <%= f.text_field :porcao, label: 'Porção de referência' %>
+  <hr>
+
+  <%= f.fields_for :medidas do |m| %>
+    <div class="row">
+      <div class="col-3">
+        <%= m.text_field :quantidade, label: 'Porção de referência' %>
+      </div>
+      <div class="col-3">
+        <%= m.text_field :unidade, label: 'Unidade de medida',
+          placeholder: 'g, kg, fatia, pedaço etc.' %>
+      </div>
     </div>
-    <div class="col-3">
-      <%= f.text_field :unidade, label: 'Unidade de medida',
-        placeholder: 'g, kg, fatia, pedaço etc.' %>
-    </div>
-    <div class="col-3">
-      <%= f.text_field :porcoes_pacote,
-        label: 'Porções por pacote (opcional)' %>
-    </div>
-  </div>
+  <% end %>
 
   <hr>
 

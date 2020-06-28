@@ -10,14 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_27_214636) do
+ActiveRecord::Schema.define(version: 2020_06_27_215905) do
 
   create_table "alimentos", force: :cascade do |t|
     t.string "nome"
     t.string "marca"
-    t.float "porcao"
-    t.string "unidade"
-    t.float "porcoes_pacote"
     t.float "energia"
     t.float "proteina"
     t.float "carb_total"
@@ -61,7 +58,6 @@ ActiveRecord::Schema.define(version: 2020_06_27_214636) do
   end
 
   create_table "registros", force: :cascade do |t|
-    t.float "porcao"
     t.integer "alimento_id", null: false
     t.integer "refeicao_id", null: false
     t.datetime "created_at", precision: 6, null: false

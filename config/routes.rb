@@ -6,7 +6,7 @@ Rails.application.routes.draw do
     get 'alimentos/:id/delete', to: 'alimentos#delete', as: 'delete_alimento'
     get 'alimentos/search', to: 'alimentos#search', as: 'search_alimentos'
 
-    resources :refeicoes do
+    resources :refeicoes, only: [:index, :new, :edit, :create, :update, :destroy] do
       resources :registros, only: [:new, :edit, :create, :update, :destroy]
       get 'registros/:id/delete', to: 'registros#delete', as: 'delete_registro'
     end

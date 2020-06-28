@@ -10,12 +10,16 @@ macronutrientes consumidos seja atualizado de acordo com o que for registrado.
 
 ## To do
 
+### Funcionalidades
+- carregar os valores dos nutrientes no formulário dos Registros, de acordo com
+a quantidade escolhida
+- habilitar a inserção de várias medidas no formulário de alimentos
+- delocalize nested attributes
+- implementar Metas
+- tratar a remoção de um usuário (remove alimentos?)
+- deixar usuário mudar a senha
+
+### Visual
+- melhorar o layout de Diário
 - arrumar scroll da tabela de Alimentos
 - arrumar tamanho da lista/tabela de Alimentos
-- criar model Medida(quantidade, unidade), que será usado por Alimentos e
-Registros
-    - Alimentos têm várias Medidas
-    - Registros têm uma Medida
-- implementar Metas
-- melhorar o layout de Diário
-- deixar usuário mudar a senha

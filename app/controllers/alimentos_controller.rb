@@ -12,17 +12,10 @@ class AlimentosController < ApplicationController
     end
   end
 
-  def show
-    @alimento = Alimento.find(params[:id])
-
-    respond_to do |format|
-      format.js
-    end
-  end
-
   def new
     @user = User.find(params[:user_id])
     @alimento = Alimento.new
+    @alimento.medidas.build
   end
 
   def edit
@@ -84,15 +77,15 @@ class AlimentosController < ApplicationController
 
   private
     def alimento_params
-      delocalize_config = { :porcao => :number, :porcoes_pacote => :number,
-        :energia => :number, :proteina => :number, :carb_total => :number,
-        :carb_disp => :number, :fibra => :number, :acucar => :number,
-        :gord_total => :number, :gord_sat => :number, :gord_mono => :number,
-        :gord_poli => :number, :gord_trans => :number, :colesterol => :number,
-        :sodio => :number }
+      delocalize_config = { :energia => :number, :proteina => :number,
+        :carb_total => :number, :carb_disp => :number, :fibra => :number,
+        :acucar => :number, :gord_total => :number, :gord_sat => :number,
+        :gord_mono => :number, :gord_poli => :number, :gord_trans => :number,
+        :colesterol => :number, :sodio => :number }
 
       params.require(:alimento)
-            .permit(:nome, :marca, :unidade, *delocalize_config.keys)
+            .permit(:nome, :marca, *delocalize_config.keys,
+                    medidas_attributes: [:id, :quantidade, :unidade])
             .delocalize(delocalize_config)
     end
 end
