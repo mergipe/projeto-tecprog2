@@ -1,0 +1,75 @@
+<div class="row">
+  <div class="col-3 border">
+    <span>
+      Energia: <%= @alimento.energia_kcal(@quantidade, @unidade) %>
+    </span>
+  </div>
+  <div class="col-3">
+    <span>
+      Carboidrato disponível: <%= @alimento.carb_disp_g(@quantidade, @unidade) %>
+    </span>
+  </div>
+  <div class="col-3">
+    <span>
+      Gordura total: <%= @alimento.gord_total_g(@quantidade, @unidade) %>
+    </span>
+  </div>
+  <div class="col-3">
+    <span>
+      Gordura poli: <%= @alimento.gord_poli_g(@quantidade, @unidade) %>
+    </span>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-3">
+    <span>
+      Proteína: <%= @alimento.proteina_g(@quantidade, @unidade) %>
+    </span>
+  </div>
+  <div class="col-3">
+    <span>
+      Fibra: <%= @alimento.fibra_g(@quantidade, @unidade) %>
+    </span>
+  </div>
+  <div class="col-3">
+    <span>
+      Gordura saturada: <%= @alimento.gord_sat_g(@quantidade, @unidade) %>
+    </span>
+  </div>
+  <div class="col-3">
+    <span>
+      Gordura trans: <%= @alimento.gord_trans_g(@quantidade, @unidade) %>
+    </span>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-3">
+    <span>
+      Carboidrato total: <%= @alimento.carb_total_g(@quantidade, @unidade) %>
+    </span>
+  </div>
+  <div class="col-3">
+    <span>
+      Açúcar: <%= @alimento.acucar_g(@quantidade, @unidade) %>
+    </span>
+  </div>
+  <div class="col-3">
+    <span>
+      Gordura mono: <%= @alimento.gord_mono_g(@quantidade, @unidade) %>
+  </div>
+  <div class="col-3">
+    <span>
+      Colesterol: <%= @alimento.colesterol_mg(@quantidade, @unidade) %>
+    </span>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-3">
+    <span>
+      Sódio: <%= @alimento.sodio_mg(@quantidade, @unidade) %>
+    </span>
+  </div>
+</div>

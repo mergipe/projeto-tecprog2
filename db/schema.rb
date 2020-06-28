@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_28_022644) do
+ActiveRecord::Schema.define(version: 2020_06_28_034433) do
 
   create_table "alimentos", force: :cascade do |t|
     t.string "nome"
@@ -34,13 +34,13 @@ ActiveRecord::Schema.define(version: 2020_06_28_022644) do
     t.index ["user_id"], name: "index_alimentos_on_user_id"
   end
 
-  create_table "porcao_referencia", force: :cascade do |t|
+  create_table "porcoes_referencia", force: :cascade do |t|
     t.float "quantidade"
     t.string "unidade"
     t.integer "alimento_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["alimento_id"], name: "index_porcao_referencia_on_alimento_id"
+    t.index ["alimento_id"], name: "index_porcoes_referencia_on_alimento_id"
   end
 
   create_table "refeicoes", force: :cascade do |t|
@@ -78,7 +78,7 @@ ActiveRecord::Schema.define(version: 2020_06_28_022644) do
   end
 
   add_foreign_key "alimentos", "users"
-  add_foreign_key "porcao_referencia", "alimentos"
+  add_foreign_key "porcoes_referencia", "alimentos"
   add_foreign_key "refeicoes", "users"
   add_foreign_key "registros", "alimentos"
   add_foreign_key "registros", "refeicoes"

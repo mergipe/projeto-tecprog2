@@ -11,8 +11,6 @@ macronutrientes consumidos seja atualizado de acordo com o que for registrado.
 ## To do
 
 ### Funcionalidades
-- carregar os valores dos nutrientes no formulário dos Registros, de acordo com
-a quantidade escolhida
 - habilitar a inserção de várias medidas no formulário de alimentos
 - delocalize nested attributes
 - implementar Metas
@@ -20,6 +18,7 @@ a quantidade escolhida
 - deixar usuário mudar a senha
 
 ### Visual
-- melhorar o layout de Diário
+- melhorar o layout de alimentos/info
+- melhorar o layout do Diário
 - arrumar scroll da tabela de Alimentos
 - arrumar tamanho da lista/tabela de Alimentos

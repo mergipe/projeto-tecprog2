@@ -66,6 +66,14 @@ class AlimentosController < ApplicationController
     end
   end
 
+  def info
+    @alimento = Alimento.find(params[:id])
+    @quantidade = params[:quantidade]
+    @unidade = params[:unidade]
+
+    render 'info'
+  end
+
   def delete
     @user = User.find(params[:user_id])
     @alimento = @user.alimentos.find(params[:id])

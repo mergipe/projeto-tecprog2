@@ -4,6 +4,8 @@ class RegistrosController < ApplicationController
     @refeicao = Refeicao.find(params[:refeicao_id])
     @alimento = Alimento.find(params[:alimento_id])
     @registro = Registro.new
+    @quantidade = @alimento.porcoes_referencia.first.quantidade
+    @unidade = @alimento.porcoes_referencia.first.unidade
 
     respond_to do |format|
       format.js
@@ -15,6 +17,8 @@ class RegistrosController < ApplicationController
     @refeicao = Refeicao.find(params[:refeicao_id])
     @alimento = Alimento.find(params[:alimento_id])
     @registro = @refeicao.registros.find(params[:id])
+    @quantidade = @registro.quantidade
+    @unidade = @registro.unidade
   end
 
   def create
@@ -26,6 +30,8 @@ class RegistrosController < ApplicationController
     if @registro.save
       redirect_to user_alimentos_path(@user, refeicao: @refeicao)
     else
+      @quantidade = params[:registro][:quantidade]
+      @unidade = params[:registro][:unidade]
       render 'new'
     end
   end
@@ -39,6 +45,8 @@ class RegistrosController < ApplicationController
     if @registro.update(registro_params)
       redirect_to user_refeicoes_path(@user, data: @refeicao.data)
     else
+      @quantidade = params[:registro][:quantidade]
+      @unidade = params[:registro][:unidade]
       render 'edit'
     end
   end

@@ -1,5 +1,5 @@
 $(function() {
-  $('#alimentos_search input').on('paste keyup', function(e) {
+  $('#alimentos_search input').on('input', function(e) {
     $.get(
       $('#alimentos_search').attr('action'),
       $('#alimentos_search').serialize(),
