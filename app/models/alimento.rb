@@ -2,8 +2,7 @@ class Alimento < ApplicationRecord
   belongs_to :user
   has_many :porcoes_referencia, class_name: 'PorcaoReferencia',
     dependent: :destroy
-  accepts_nested_attributes_for :porcoes_referencia, reject_if: :all_blank,
-    allow_destroy: true
+  accepts_nested_attributes_for :porcoes_referencia, reject_if: :all_blank
   validate :valida_porcoes
 
   validates :nome, presence: true

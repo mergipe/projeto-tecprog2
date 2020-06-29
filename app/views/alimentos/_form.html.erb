@@ -17,27 +17,14 @@
   <div id="porcoes_referencia">
     <% @alimento.porcoes_referencia.each.with_index do |porcao, index| %>
       <%= f.fields_for :porcoes_referencia, porcao do |m| %>
-        <div class="row">
+        <div class="row" data-saved="<%= !porcao.new_record? %>">
           <div class="col-3">
             <%= m.text_field :quantidade, label: 'Porção de referência' %>
           </div>
           <div class="col-3">
             <%= m.text_field :unidade, label: 'Unidade de medida',
-              placeholder: 'g, kg, fatia, pedaço etc.' %>
+              placeholder: 'g, kg, fatia, pedaço etc.', class: 'col-10' %>
           </div>
-          <% if index != 0 %>
-            <div class="col-1 d-flex align-items-center">
-              <button type="button" class="close mt-3"
-                data-saved="<%= !porcao.new_record? %>">
-                <span>&times;</span>
-              </button>
-            </div>
-
-            <% if !porcao.new_record? %>
-              <%= m.check_box :_destroy, style: 'display: none',
-                hide_label: true %>
-            <% end %>
-          <% end %>
         </div>
       <% end %>
     <% end %>
@@ -117,6 +104,16 @@
 <% end %>
 
 <script>
+  $(window).on('load', function() {
+    $('#porcoes_referencia').find('.row[data-saved="false"]').each(function(i, row) {
+      fixRowLayout(row);
+
+      <% if !@alimento.errors.empty? %>
+        addBotaoRemover(row);
+      <% end %>
+    });
+  });
+
   $('#porcoes_referencia input').on('input', function() {
     verificaUltimaPorcao();
   });

@@ -101,8 +101,7 @@ class AlimentosController < ApplicationController
 
       params.require(:alimento)
             .permit(:nome, :marca, *delocalize_config.keys,
-                    porcoes_referencia_attributes: [:id, :quantidade,
-                                                    :unidade, :_destroy])
+                    porcoes_referencia_attributes: [:id, :quantidade, :unidade])
             .delocalize(delocalize_config)
     end
 end

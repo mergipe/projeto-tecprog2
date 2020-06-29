@@ -11,7 +11,9 @@ function addPorcaoRef() {
         .replace("0", mSec);
 
     var row = document.createElement("div");
+    row.setAttribute("id", "row_" + mSec);
     row.setAttribute("class", "row");
+    row.setAttribute("data-saved", "false");
 
     var colQuantidade = document.createElement("div");
     colQuantidade.setAttribute("class", "col-3");
@@ -37,6 +39,8 @@ function addPorcaoRef() {
 
     var colUnidade = document.createElement("div");
     colUnidade.setAttribute("class", "col-3");
+    var div = document.createElement("div");
+    div.setAttribute("class", "d-flex flex-row");
     var formGroupUnidade = document.createElement("div");
     formGroupUnidade.setAttribute("class", "form-group");
     var labelUnidade = document.createElement("label");
@@ -49,31 +53,33 @@ function addPorcaoRef() {
     inputUnidade.setAttribute("type", "text");
     inputUnidade.setAttribute("id", idUnidade);
     inputUnidade.setAttribute("name", nameUnidade);
-    inputUnidade.setAttribute("class", "form-control");
+    inputUnidade.setAttribute("class", "form-control col-10");
     inputUnidade.setAttribute("placeholder", "g, kg, fatia, pedaço etc.");
     inputUnidade.addEventListener("input", function() {
         verificaUltimaPorcao();
     });
-    formGroupUnidade.appendChild(inputUnidade);
+    div.appendChild(inputUnidade);
+    formGroupUnidade.appendChild(div);
     colUnidade.appendChild(formGroupUnidade);
     row.appendChild(colUnidade);
 
-    var colRemover = document.createElement("div");
-    colRemover.setAttribute("class", "col-1 d-flex align-items-center");
+    document.getElementById("porcoes_referencia").appendChild(row);
+}
+
+function addBotaoRemover(row) {
     var botaoRemover = document.createElement("button");
+    botaoRemover.setAttribute("data-id", row.getAttribute("id"));
     botaoRemover.setAttribute("type", "button");
-    botaoRemover.setAttribute("class", "close mt-3");
-    botaoRemover.setAttribute("data-saved", "false");
+    botaoRemover.setAttribute("class", "close ml-auto");
     botaoRemover.addEventListener("click", function() {
         removePorcao($(this)[0]);
     });
     var spanRemover = document.createElement("span");
     spanRemover.innerHTML = "&times;";
     botaoRemover.appendChild(spanRemover);
-    colRemover.appendChild(botaoRemover);
-    row.appendChild(colRemover);
 
-    document.getElementById("porcoes_referencia").appendChild(row);
+    var div = row.getElementsByClassName("d-flex flex-row")[0];
+    div.appendChild(botaoRemover);
 }
 
 function verificaUltimaPorcao() {
@@ -84,17 +90,24 @@ function verificaUltimaPorcao() {
     var inputUnidade = lastRow.children[1].getElementsByTagName("input")[0];
 
     if (!inputQuantidade.value.trim() == '' && !inputUnidade.value.trim() == '') {
+        if (lastRow.getAttribute("data-saved") == "false")
+            addBotaoRemover(lastRow);
+
         addPorcaoRef();
     }
 }
 
 function removePorcao(botao) {
-    var row = botao.parentElement.parentElement;
+    var row = document.getElementById(botao.getAttribute("data-id"));
+    row.remove();
+}
 
-    if (botao.getAttribute("data-saved") == "true") {
-        var checkbox = row.getElementsByClassName("form-check-input")[0];
-        checkbox.checked = true;
-    }
-
-    row.style.display = 'none';
+function fixRowLayout(row) {
+    row.setAttribute("id", "row_" + new Date().getTime());
+    var lastInput = row.getElementsByTagName("input")[1];
+    var formGroup = lastInput.parentElement;
+    var div = document.createElement("div");
+    div.setAttribute("class", "d-flex flex-row");
+    div.appendChild(lastInput);
+    formGroup.appendChild(div);
 }
