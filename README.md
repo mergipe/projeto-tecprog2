@@ -11,7 +11,7 @@ macronutrientes consumidos seja atualizado de acordo com o que for registrado.
 ## To do
 
 ### Funcionalidades
-- habilitar a inserção de várias medidas no formulário de alimentos
+- remover porções de referência
 - delocalize nested attributes
 - implementar Metas
 - tratar a remoção de um usuário (remove alimentos?)

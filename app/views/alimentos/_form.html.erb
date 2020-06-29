@@ -12,19 +12,30 @@
     </div>
   </div>
 
-  <hr>
+  <hr class="mb-4">
 
-  <%= f.fields_for :porcoes_referencia do |m| %>
-    <div class="row mt-4">
-      <div class="col-3">
-        <%= m.text_field :quantidade, label: 'Porção de referência' %>
-      </div>
-      <div class="col-3">
-        <%= m.text_field :unidade, label: 'Unidade de medida',
-          placeholder: 'g, kg, fatia, pedaço etc.' %>
-      </div>
-    </div>
-  <% end %>
+  <div id="porcoes_referencia">
+    <% @alimento.porcoes_referencia.each.with_index do |porcao, index| %>
+      <%= f.fields_for :porcoes_referencia, porcao do |m| %>
+        <div class="row">
+          <div class="col-3">
+            <%= m.text_field :quantidade, label: 'Porção de referência' %>
+          </div>
+          <div class="col-3">
+            <%= m.text_field :unidade, label: 'Unidade de medida',
+              placeholder: 'g, kg, fatia, pedaço etc.' %>
+          </div>
+
+          <% if index == 0 %>
+            <div class="my-auto ml-auto mr-3">
+              <%= submit_tag 'Adicionar porção de referência', type: 'button',
+                class: 'btn btn-primary', onclick: 'addPorcaoRef();' %>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
 
   <hr>
 
