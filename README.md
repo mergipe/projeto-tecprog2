@@ -20,5 +20,6 @@ macronutrientes consumidos seja atualizado de acordo com o que for registrado.
 ### Visual
 - melhorar o layout de alimentos/info
 - melhorar o layout do Diário
+- melhorar o layout do formulário de alimentos
 - arrumar scroll da tabela de Alimentos
 - arrumar tamanho da lista/tabela de Alimentos

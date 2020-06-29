@@ -9,7 +9,7 @@
         <%= f.text_field :quantidade, label: 'Porção', value: @quantidade %>
       </div>
       <div class="col-4">
-        <%= f.select :unidade, options_for_select(@alimento.opcoes_porcao) %>
+        <%= f.select :unidade, options_for_select(@alimento.opcoes_porcao, @unidade) %>
       </div>
     </div>
 
