@@ -13,7 +13,7 @@ class Refeicao < ApplicationRecord
 
   def calc_totais
     if !self.new_record?
-      @energia = 0; @carb = 0; @prot = 0; @gord = 0
+      @energia = 0; @carb = 0; @prot = 0; @gord = 0;
 
       self.registros.each do |reg|
         @energia += reg.alimento.energia_porcao(reg.quantidade, reg.unidade)

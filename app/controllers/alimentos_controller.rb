@@ -56,7 +56,7 @@ class AlimentosController < ApplicationController
   def destroy
     @user = User.find(params[:user_id])
     @alimento = @user.alimentos.find(params[:id])
-    @alimento.destroy
+    @alimento.remove
 
     redirect_to user_alimentos_path(@user)
   end

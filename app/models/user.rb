@@ -10,10 +10,8 @@ class User < ApplicationRecord
   has_many :refeicoes, dependent: :destroy
 
   def destroy_alimentos
-    alimentos.each do |alimento|
-      # verifica se alimento está em alguma refeição
-      # se estiver então não destrói
-      # se não destrói
+    self.alimentos.each do |alimento|
+      alimento.remove
     end
   end
 end

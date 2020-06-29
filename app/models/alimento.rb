@@ -103,6 +103,14 @@ class Alimento < ApplicationRecord
     return nutriente_porcao(self.sodio, quantidade, unidade)
   end
 
+  def remove
+    if Registro.from_alimento(self).empty?
+      self.destroy
+    else
+      self.update_attribute(:user_id, nil)
+    end
+  end
+
   def self.search(search)
     if search
       where('nome LIKE ?', "%#{search}%")
