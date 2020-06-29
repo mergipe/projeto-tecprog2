@@ -11,7 +11,6 @@ macronutrientes consumidos seja atualizado de acordo com o que for registrado.
 ## To do
 
 ### Funcionalidades
-- deixar usuário mudar a senha
 - delocalize nested attributes
 - implementar Metas
 
