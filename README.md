@@ -11,7 +11,6 @@ macronutrientes consumidos seja atualizado de acordo com o que for registrado.
 ## To do
 
 ### Funcionalidades
-- remover porções de referência
 - tratar a remoção de um usuário (remove alimentos?)
 - tratar a remoção de um alimento (registros)
 - deixar usuário mudar a senha

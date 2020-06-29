@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_28_034433) do
+ActiveRecord::Schema.define(version: 2020_06_29_153028) do
 
   create_table "alimentos", force: :cascade do |t|
     t.string "nome"
@@ -40,6 +40,7 @@ ActiveRecord::Schema.define(version: 2020_06_28_034433) do
     t.integer "alimento_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["alimento_id", "id"], name: "index_porcoes_referencia_on_alimento_id_and_id", unique: true
     t.index ["alimento_id"], name: "index_porcoes_referencia_on_alimento_id"
   end
 

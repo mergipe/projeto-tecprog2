@@ -33,9 +33,8 @@
 
 <script>
   function refresh() {
-    var path;
     <% helper = Rails.application.routes.url_helpers %>
-    path = "<%= helper.user_info_alimento_path(@user, @alimento) %>";
+    var path = "<%= helper.user_info_alimento_path(@user, @alimento) %>";
 
     $.get({
       url: path,

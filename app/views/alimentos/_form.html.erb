@@ -25,6 +25,19 @@
             <%= m.text_field :unidade, label: 'Unidade de medida',
               placeholder: 'g, kg, fatia, pedaço etc.' %>
           </div>
+          <% if index != 0 %>
+            <div class="col-1 d-flex align-items-center">
+              <button type="button" class="close mt-3"
+                data-saved="<%= !porcao.new_record? %>">
+                <span>&times;</span>
+              </button>
+            </div>
+
+            <% if !porcao.new_record? %>
+              <%= m.check_box :_destroy, style: 'display: none',
+                hide_label: true %>
+            <% end %>
+          <% end %>
         </div>
       <% end %>
     <% end %>
@@ -106,5 +119,9 @@
 <script>
   $('#porcoes_referencia input').on('input', function() {
     verificaUltimaPorcao();
+  });
+
+  $('#porcoes_referencia button').on('click', function() {
+    removePorcao($(this)[0]);
   });
 </script>

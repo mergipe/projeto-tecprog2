@@ -17,7 +17,6 @@ function addPorcaoRef() {
     colQuantidade.setAttribute("class", "col-3");
     var formGroupQuantidade = document.createElement("div");
     formGroupQuantidade.setAttribute("class", "form-group");
-
     var labelQuantidade = document.createElement("label");
     labelQuantidade.setAttribute("for", idQuantidade);
     labelQuantidade.setAttribute("class", "required");
@@ -33,7 +32,6 @@ function addPorcaoRef() {
         verificaUltimaPorcao();
     });
     formGroupQuantidade.appendChild(inputQuantidade);
-
     colQuantidade.appendChild(formGroupQuantidade);
     row.appendChild(colQuantidade);
 
@@ -41,7 +39,6 @@ function addPorcaoRef() {
     colUnidade.setAttribute("class", "col-3");
     var formGroupUnidade = document.createElement("div");
     formGroupUnidade.setAttribute("class", "form-group");
-
     var labelUnidade = document.createElement("label");
     labelUnidade.setAttribute("for", idUnidade);
     labelUnidade.setAttribute("class", "required");
@@ -54,13 +51,27 @@ function addPorcaoRef() {
     inputUnidade.setAttribute("name", nameUnidade);
     inputUnidade.setAttribute("class", "form-control");
     inputUnidade.setAttribute("placeholder", "g, kg, fatia, pedaço etc.");
-    inputUnidade.addEventListener("input", function () {
+    inputUnidade.addEventListener("input", function() {
         verificaUltimaPorcao();
     });
     formGroupUnidade.appendChild(inputUnidade);
-
     colUnidade.appendChild(formGroupUnidade);
     row.appendChild(colUnidade);
+
+    var colRemover = document.createElement("div");
+    colRemover.setAttribute("class", "col-1 d-flex align-items-center");
+    var botaoRemover = document.createElement("button");
+    botaoRemover.setAttribute("type", "button");
+    botaoRemover.setAttribute("class", "close mt-3");
+    botaoRemover.setAttribute("data-saved", "false");
+    botaoRemover.addEventListener("click", function() {
+        removePorcao($(this)[0]);
+    });
+    var spanRemover = document.createElement("span");
+    spanRemover.innerHTML = "&times;";
+    botaoRemover.appendChild(spanRemover);
+    colRemover.appendChild(botaoRemover);
+    row.appendChild(colRemover);
 
     document.getElementById("porcoes_referencia").appendChild(row);
 }
@@ -75,4 +86,15 @@ function verificaUltimaPorcao() {
     if (!inputQuantidade.value.trim() == '' && !inputUnidade.value.trim() == '') {
         addPorcaoRef();
     }
+}
+
+function removePorcao(botao) {
+    var row = botao.parentElement.parentElement;
+
+    if (botao.getAttribute("data-saved") == "true") {
+        var checkbox = row.getElementsByClassName("form-check-input")[0];
+        checkbox.checked = true;
+    }
+
+    row.style.display = 'none';
 }
