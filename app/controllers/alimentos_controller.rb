@@ -21,11 +21,16 @@ class AlimentosController < ApplicationController
   def edit
     @user = User.find(params[:user_id])
     @alimento = @user.alimentos.find(params[:id])
+    @alimento.porcoes_referencia.build
   end
 
   def create
     @user = User.find(params[:user_id])
     @alimento = @user.alimentos.create(alimento_params)
+
+    if @alimento.errors[:porcoes_referencia] and @alimento.porcoes_referencia.size < 1
+      @alimento.porcoes_referencia.build
+    end
 
     if @alimento.save
       redirect_to user_alimentos_path(@user)
@@ -37,6 +42,9 @@ class AlimentosController < ApplicationController
   def update
     @user = User.find(params[:user_id])
     @alimento = @user.alimentos.find(params[:id])
+
+    if @alimento.errors[:porcoes_referencia] and @alimento.porcoes_referencia.size == 1
+    end
 
     if @alimento.update(alimento_params)
       redirect_to user_alimentos_path(@user)

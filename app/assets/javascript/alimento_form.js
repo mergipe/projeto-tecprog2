@@ -29,6 +29,9 @@ function addPorcaoRef() {
     inputQuantidade.setAttribute("id", idQuantidade);
     inputQuantidade.setAttribute("name", nameQuantidade);
     inputQuantidade.setAttribute("class", "form-control");
+    inputQuantidade.addEventListener("input", function () {
+        verificaUltimaPorcao();
+    });
     formGroupQuantidade.appendChild(inputQuantidade);
 
     colQuantidade.appendChild(formGroupQuantidade);
@@ -51,10 +54,25 @@ function addPorcaoRef() {
     inputUnidade.setAttribute("name", nameUnidade);
     inputUnidade.setAttribute("class", "form-control");
     inputUnidade.setAttribute("placeholder", "g, kg, fatia, pedaço etc.");
+    inputUnidade.addEventListener("input", function () {
+        verificaUltimaPorcao();
+    });
     formGroupUnidade.appendChild(inputUnidade);
 
     colUnidade.appendChild(formGroupUnidade);
     row.appendChild(colUnidade);
 
     document.getElementById("porcoes_referencia").appendChild(row);
+}
+
+function verificaUltimaPorcao() {
+    var porcoesRef = document.getElementById("porcoes_referencia");
+    var rows = porcoesRef.getElementsByClassName("row");
+    var lastRow = rows[rows.length - 1];
+    var inputQuantidade = lastRow.children[0].getElementsByTagName("input")[0];
+    var inputUnidade = lastRow.children[1].getElementsByTagName("input")[0];
+
+    if (!inputQuantidade.value.trim() == '' && !inputUnidade.value.trim() == '') {
+        addPorcaoRef();
+    }
 }

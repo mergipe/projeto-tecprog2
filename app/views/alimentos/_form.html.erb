@@ -25,13 +25,6 @@
             <%= m.text_field :unidade, label: 'Unidade de medida',
               placeholder: 'g, kg, fatia, pedaço etc.' %>
           </div>
-
-          <% if index == 0 %>
-            <div class="my-auto ml-auto mr-3">
-              <%= submit_tag 'Adicionar porção de referência', type: 'button',
-                class: 'btn btn-primary', onclick: 'addPorcaoRef();' %>
-            </div>
-          <% end %>
         </div>
       <% end %>
     <% end %>
@@ -109,3 +102,9 @@
   </div>
 
 <% end %>
+
+<script>
+  $('#porcoes_referencia input').on('input', function() {
+    verificaUltimaPorcao();
+  });
+</script>
