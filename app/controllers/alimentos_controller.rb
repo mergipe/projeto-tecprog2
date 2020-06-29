@@ -98,6 +98,12 @@ class AlimentosController < ApplicationController
         :acucar => :number, :gord_total => :number, :gord_sat => :number,
         :gord_mono => :number, :gord_poli => :number, :gord_trans => :number,
         :colesterol => :number, :sodio => :number }
+      delocalize_config_nested = { :quantidade => :number }
+
+      porcoes = params[:alimento][:porcoes_referencia_attributes]
+      porcoes.each_key do |id|
+        porcoes[id].delocalize(:quantidade => :number)
+      end
 
       params.require(:alimento)
             .permit(:nome, :marca, *delocalize_config.keys,

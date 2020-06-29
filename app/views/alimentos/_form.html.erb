@@ -108,7 +108,7 @@
     $('#porcoes_referencia').find('.row[data-saved="false"]').each(function(i, row) {
       fixRowLayout(row);
 
-      <% if !@alimento.errors.empty? %>
+      <% if !@alimento.errors.empty? and @alimento.porcoes_referencia.size > 1 %>
         addBotaoRemover(row);
       <% end %>
     });
