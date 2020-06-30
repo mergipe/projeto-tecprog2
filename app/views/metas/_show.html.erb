@@ -1,0 +1,41 @@
+<h4 class="mb-4 text-center">Macronutrientes do dia</h4>
+
+<% energia, energia_total = energia_prog(meta, refeicoes) %>
+<span class="text-center">
+  Energia (kcal): <%= energia %> / <%= energia_total %>
+</span>
+<div class="progress mt-1 mb-3" style="height: 2em;">
+  <div class="progress-bar" role="progressbar"
+       style="width:<%= energia / energia_total * 100 %>%;">
+  </div>
+</div>
+
+<% carb, carb_total = carb_prog(meta, refeicoes) %>
+<span class="text-center">
+  Carboidratos (g): <%= carb %> / <%= carb_total %>
+</span>
+<div class="progress mt-1 mb-3" style="height: 2em;">
+  <div class="progress-bar" role="progressbar"
+       style="width:<%= carb / carb_total * 100 %>%;">
+  </div>
+</div>
+
+<% prot, prot_total = proteina_prog(meta, refeicoes) %>
+<span class="text-center">
+  Proteína (g): <%= prot %> / <%= prot_total %>
+</span>
+<div class="progress mt-1 mb-3" style="height: 2em;">
+  <div class="progress-bar" role="progressbar"
+       style="width:<%= prot / prot_total * 100 %>%;">
+  </div>
+</div>
+
+<% gord, gord_total = gord_prog(meta, refeicoes) %>
+<span class="text-center">
+  Lipídeos (g): <%= gord %> / <%= gord_total %>
+</span>
+<div class="progress mt-1 mb-3" style="height: 2em;">
+  <div class="progress-bar" role="progressbar"
+       style="width:<%= gord / gord_total * 100 %>%;">
+  </div>
+</div>

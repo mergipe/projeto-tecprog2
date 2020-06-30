@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_29_153028) do
+ActiveRecord::Schema.define(version: 2020_06_30_001703) do
 
   create_table "alimentos", force: :cascade do |t|
     t.string "nome"
@@ -32,6 +32,17 @@ ActiveRecord::Schema.define(version: 2020_06_29_153028) do
     t.datetime "updated_at", precision: 6, null: false
     t.integer "user_id"
     t.index ["user_id"], name: "index_alimentos_on_user_id"
+  end
+
+  create_table "metas", force: :cascade do |t|
+    t.float "energia", default: 0.0
+    t.float "carb_total", default: 0.0
+    t.float "proteina", default: 0.0
+    t.float "gord_total", default: 0.0
+    t.integer "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_metas_on_user_id"
   end
 
   create_table "porcoes_referencia", force: :cascade do |t|
@@ -79,6 +90,7 @@ ActiveRecord::Schema.define(version: 2020_06_29_153028) do
   end
 
   add_foreign_key "alimentos", "users"
+  add_foreign_key "metas", "users"
   add_foreign_key "porcoes_referencia", "alimentos"
   add_foreign_key "refeicoes", "users"
   add_foreign_key "registros", "alimentos"

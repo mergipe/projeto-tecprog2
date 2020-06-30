@@ -1,0 +1,16 @@
+<div class="mb-3">
+  <h1>Minhas metas diárias</h1>
+</div>
+
+<%= bootstrap_form_with(model: [ @user, @meta ], remote: true,
+  inline_errors: true, html: { autocomplete: "off" },
+  class: 'w-25') do |f| %>
+
+  <%= f.text_field :energia, append: 'kcal' %>
+  <%= f.text_field :carb_total, label: 'Carboidratos', append: 'g' %>
+  <%= f.text_field :proteina, append: 'g' %>
+  <%= f.text_field :gord_total, label: 'Lipídeos', append: 'g' %>
+
+  <%= f.submit 'Salvar', class: 'btn btn-primary mt-3' %>
+
+<% end %>

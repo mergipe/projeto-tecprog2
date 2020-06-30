@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   devise_for :users
 
   resources :users do
+    resources :metas, only: [:edit, :update]
     resources :alimentos, only: [:index, :new, :edit, :create, :update, :destroy]
     get 'alimentos/:id/delete', to: 'alimentos#delete', as: 'delete_alimento'
     get 'alimentos/search', to: 'alimentos#search', as: 'search_alimentos'

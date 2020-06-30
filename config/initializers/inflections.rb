@@ -18,4 +18,5 @@
 ActiveSupport::Inflector.inflections do |inflect|
   inflect.irregular 'refeicao', 'refeicoes'
   inflect.irregular 'porcao_referencia', 'porcoes_referencia'
+  inflect.irregular 'meta', 'metas'
 end

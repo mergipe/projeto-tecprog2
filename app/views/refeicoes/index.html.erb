@@ -29,9 +29,12 @@
     <% end %>
   </div>
 
-  <div class="float-right ml-4">
+  <div class="d-flex flex-column float-right ml-5 w-25">
+    <%= render partial: 'metas/show',
+      locals: {meta: @user.meta, refeicoes: @refeicoes} %>
+
     <%= link_to 'Adicionar refeição',
       new_user_refeicao_path(@user, data: @data), remote: true,
-      class: 'btn btn-primary' %>
+      class: 'btn btn-primary mx-auto mt-4' %>
   </div>
 </div>
